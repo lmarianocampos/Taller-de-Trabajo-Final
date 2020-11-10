@@ -5,14 +5,22 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-Todos los capítulos deben comenzar con un breve párrafo introductorio que indique cuál es el contenido que se encontrará al leerlo.  La redacción sobre el contenido de la memoria debe hacerse en presente y todo lo referido al proyecto en pasado, siempre de modo impersonal.
+%Todos los capítulos deben comenzar con un breve párrafo introductorio que indique cuál es el contenido que se encontrará al leerlo.  La redacción sobre el contenido de la memoria debe hacerse en presente y todo lo referido al proyecto en pasado, siempre de modo impersonal.
+En este capítulo se abordarán temas referentes al análisis de la estructura general que se desarrolló, gestión, planificación del trabajo y técnicas relacionadas al sensor empleado.  	 
 
-\section{Estilo y convenciones}
+\section{Estructura general del sistema}
 \label{sec:ejemplo}
 
-\subsection{Uso de mayúscula inicial para los título de secciones}
+%\subsection{Uso de mayúscula inicial para los título de secciones}
 
-Si en el texto se hace alusión a diferentes partes del trabajo referirse a ellas como capítulo, sección o subsección según corresponda. Por ejemplo: ``En el capítulo \ref{Chapter1} se explica tal cosa'', o ``En la sección \ref{sec:ejemplo} se presenta lo que sea'', o ``En la subsección \ref{subsec:ejemplo} se discute otra cosa''.
+%Si en el texto se hace alusión a diferentes partes del trabajo referirse a ellas como capítulo, sección o subsección según corresponda. Por ejemplo: ``En el capítulo \ref{Chapter1} se explica tal cosa'', o ``En la sección \ref{sec:ejemplo} se presenta lo que sea'', o ``En la subsección \ref{subsec:ejemplo} se discute otra cosa''.
+Con el avance en el diseño de un plano para la fabricación del prototipo para los diferentes ensayos a realizar, ligeramente se identificó que emplear una compuerta a escala generaría filtraciones de agua que, en una maqueta, a escala producirían  errores considerables al momento de realizar la mediciones y cálculos pertinentes al caudal y de esta forma obtener resultados no esperados. Esto motivo el reemplazo de la compuerta por una válvula para adquirir una mayor precisión en la medición del nivel de agua con respecto al ángulo de apertura de dicha válvula.  
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.50]{./Figures/VertederoTriangular.png}
+\caption{Ilustración del cuadrado azul que se eligió para el diseño del logo.}
+\end{figure}
+Para medir el caudal, se fabricó un caudalímetro por placa de aforo triangular. Estos tipos de instrumentos, también denominados vertederos, representan un dique o pared que intercepta en un determinado punto una corriente de liquido, en este caso agua, con superficie libre. En general, se utilizan para mantener un nivel de superficie de aguas arriba que no exceda de un valor limite, o bien para medir el caudal de agua circulante por un canal. Este instrumento resulta un medidor de caudal sencillo pero efectivo en canales abiertos.
 
 Cuando se quiere poner una lista tabulada, se hace así:
 
@@ -55,7 +63,7 @@ Al insertar figuras en la memoria se deben considerar determinadas pautas. Para 
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.45]{./Figures/cuadradoAzul.png}
+\includegraphics[scale=.50]{./Figures/cuadradoAzul.png}
 \end{figure}
 
 La forma correcta de utilizar una figura es con referencias cruzadas, por ejemplo: ``Se eligió utilizar un cuadrado azul para el logo, como puede observarse en la figura \ref{fig:cuadradoAzul}''.
