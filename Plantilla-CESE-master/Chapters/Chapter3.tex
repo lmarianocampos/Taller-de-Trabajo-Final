@@ -307,10 +307,10 @@ A continuación se incluye el diseño detallado de cada uno de los componentes d
 \label{subsec:Casos de uso}
 Para la etapa de captura de requerimientos funcionales que el sistema debía satisfacer se emplearon casos de uso correspondientes al Lenguaje Unificado Modelado (UML) ya que es de mucha utilidad y permite especificar, visualizar, construir y documentar los requisitos del sistema especialmente en sistemas con un alto grado de interacción hombre/máquina. A continuación se presentan dos casos de uso considerados como principales.
 
-Caso de uso: detectar el nivel de agua del canal.
+\subsubsection{Caso de uso: detectar el nivel de agua del canal}
 \begin{table}[t]
 \begin{center}
-\begin{tabular}{ | m{4cm} | m{9cm} | }
+\begin{tabular}{ | m{4cm} | m{9.5cm} | }
 \hline Nombre & Detectar el nivel de agua del canal \\ \hline
 1.1 Breve descripción & 
 El firmware debe detectar por medio del sensor de presión el nivel de agua existente en el canal. \\ \hline
@@ -378,6 +378,155 @@ funcionamiento y en condiciones para la recepción de futuros comandos. \\ \hlin
 \label{tab:coches}
 \end{center}
 \end{table}
+
+\subsubsection{Caso de uso:establecer un determinado valor de caudal.}
+
+\begin{table}[t]
+\begin{center}
+\begin{tabular}{ | m{4cm} | m{9cm} | }
+\hline 
+Nombre & Establecer un determinado de valor de caudal.\\ \hline
+1.1 Breve descripción &
+El firmware debe establecer un caudal mediante la manipulación de la posición de la válvula de control.\\ \hline
+ 1.2 Actor Principal & La aplicación móvil.\\ \hline
+ 1.3 Disparadores & La recepción de un comando \\ \hline
+Flujo de Eventos & \\ \hline
+
+
+ 2.1 Flujo básico &
+El firmware recibe el paquete desde un smartphone  o desde una aplicación de comunicación serial desde una pc. \\ \hline
+ 2.1.2 Flujo básico &
+El firmware deberá desencapsular el comando recibido y extraer los diferentes campos de información. \\ \hline
+ 2.1.3 Flujo básico &
+El firmware deberá identificar el tipo de operación. \\ \hline
+
+
+ 2.1.4 Flujo básico &
+El firmware deberá leer un pin configurado como adc asociado al sensor de presión un valor digital. \\ \hline
+
+
+2.1.5 Flujo básico &
+Se repite el paso 2.1.4 hasta 5 veces, de forma que el firmware deberá realizar una acumulación de los valores obtenidos.\\ \hline
+2.1.6 Flujo básico &
+ El firmware con base al acumulador obtenido en el punto anterior deberá, realizar un filtro de promedio móvil.  \\ \hline
+2.1.7 Flujo básico & 
+El firmware deberá convertir el valor digital promediado a tensión.  \\ \hline
+2.1.8 Flujo básico & 
+El firmware deberá obtener el caudal con el dato obtenido en el punto anterior empleando una tabla que se obtendrá experimentalmente. \\ \hline
+2.1.9 Flujo básico &
+El firmware deberá comparar este resultado de caudal obtenido con el set point. \\ \hline
+2.1.10 Flujo básico &
+En caso de ser valores diferentes, el firmware deberá generar un tren de pulsos hasta posicionar la válvula de control. \\ \hline
+2.1.11 Flujo básico &
+Se repite desde 2.1.4 hasta que el caudal obtenido a través del sensor y el set point sean iguales. \\ \hline
+2.2 Flujo alternativo & \\ \hline
+
+
+2.2.1 Flujo alternativo & 
+2.1.10 Si los valores son iguales el firmware deberá detener la generación del tren de pulsos. \\ \hline
+Requisitos Especiales & \\ \hline
+
+
+Pre - condiciones & \\ \hline
+ 
+4.1 Pre - condiciones &
+El firmware debe estar en estado de correcto funcionamiento. \\ \hline
+4.2 Pre - condiciones &
+La comunicación serial se debe encontrar en condiciones óptimas para su funcionamiento correcto. \\ \hline
+Post- Condiciones &
+El firmware deberá quedar operativo y en correcto funcionamiento y en condiciones para la recepción de futuros comandos.\\ \hline
+\end{tabular}
+\caption{ Caso de uso: establecer un determinado valor de caudal.}
+\label{tab:establecer un determinado valor de caudal.}
+\end{center}
+\end{table}
+
+\subsection{Diagrama de clase}
+\label{subsec:Diagrama de clase}
+Al momento de desarrollar el firmware, de forma previa se realizó un diagrama de clase, que se puede ver en la "Figura \ref{fig:Diagrama de clase.}". 
+\begin{figure}
+	\centering
+	\includegraphics[scale=.75]{./Figures/DiagramaDeClase-DistribucionDeAgua.png}
+	\caption{Diagrama de clase.}
+	\label{fig:Diagrama de clase.}
+	\end{figure}
+
+Uart:  
+este módulo recibe y envía los comandos desde y hacia la aplicación de comunicación serial que se ejecuta en la PC.
+
+Command Processing:
+acumulará y convertirá de carácter a decimal los comandos recibidos y los devuelve cuando sea solicitado
+
+
+
+Stepper Motor:
+este módulo posee todas las funciones inherentes al control del motor paso a paso. Interactúa con el módulo Servomotor para integrar las características de un servomotor convencional. 
+
+Servomotor:
+el propósito de Servomotor es establecer la posición de la válvula realizando una comparación entre el resultado que se va obteniendo del algoritmo de control PID, output y la posición actual de dicha válvula.
+
+PID:  
+este módulo implementa un algoritmo de control PID. El mismo es ejecutado cada un segundo para cuantificar el error o desviación que existe entre el valor de caudal medido a través del sensor de presión y el valor deseado. Este valor es solicitado por el módulo Servomotor.
+\subsection{Protocolo de comunicación}
+\label{subsec:Protocolo de comunicación}
+Se definió un paquete de datos  para que el usuario pueda testear todos los comandos que involucre el servomotor y verificar su correcto funcionamiento. A continuación se detalla lo siguiente:
+\begin{enumerate}
+\item Habilitar o deshabilitar el motor.
+\item Establecer los micro pasos (MicroStep).
+\item Establecer el sentido de giro(Horario/Antihorario).
+\item Cantidad de pasos a realizar.
+\item El ángulo a girar.
+\item Cantidad de vueltas a girar.
+\end{enumerate}
+Un vez validado el funcionamiento del servomotor se procedió de estructurar los comandos validos del sistema.
+\begin{itemize}
+\item Habilitar el motor: ME \\
+		\hspace{1cm} M: Motor	\\
+		\hspace{1cm} E: Habilitar 
+\item Deshabilitar el motor: MD \\
+		M: Motor \\
+		D: Deshabilitar
+\item Establecer los micropasos: MMSF, MMSH, MMS04, MMS08, MMS16, MMS32 \\
+		M: Motor \\
+		MS: MicroSteps \\
+		F: Full step \\
+		H: Half step \\
+		04: 1/4 step \\
+		08: 1/8 step \\
+		16: 1/16 step \\
+		32: 1/32 step 
+\item Establecer el sentido de giro del eje del motor: MTH, MTA.\\
+		M: Motor. \\
+		T: Turn (giro) \\
+		H: Horario. \\
+		A: Antihorario \\
+		
+		‘0’ lógico antihorario \\
+		’1' lógico	 horario 		
+\item	Establecer la cantidad de pasos: MS1201. \\
+		M: Motor \\
+		S: Step \\
+		1201: 4 dígitos para el número de pasos 
+\item	Establece el ángulo de giro del eje del motor: MA0360. \\
+		M: Motor \\
+		A: Ángulo \\
+		0360: 4 dígitos para especificar el valor del ángulo 
+\item  Establece la cantidad de vueltas que deberá girar el eje del motor: MFT003. \\
+    M: Motor \\
+    FT: Full Turns(vueltas completadas) \\
+    003: 3 dígitos para especificar el valor de las vueltas completas 
+\item Establecer el Set Point del control PID: SP075. \\
+   SP: Set Point \\
+   075: Porcentaje correspondiente al máximo del caudal 
+\item Detectar el nivel de agua: NA(nivel de agua).
+
+\end{itemize}
+
+Al final de cada una de las tramas, se incorpora el carácter de salto de línea que indica el límite final del comando. Una vez recibido el mismo, este pasa a ser procesado por una función, de forma que si presenta un error, el firmware envía por el mismo medio una cadena “comando invalido”, caso contrario “comando válido”. 
+\subsection{Algoritmo PID}
+\label{subsec:Algoritmo PID}
+Durante el diseño del proyecto se identificó la posibilidad de implementar un control de proceso con realimentación. La tarea particular del sistema de control, es la de determinar y actualizar la posición de la válvula a medida que cambian las condiciones de carga hasta que la variable controlada, caudal, alcance el valor deseado, y permanecer allí indefinidamente aún produciéndose perturbaciones externas. Con base a las necesidades expuestas se definió incorporar al firmware un algoritmo de control PID como una herramienta tecnológica que permite cuantificar el error o desviación que existe entre un valor medido y un valor deseado de caudal. El mismo está basado en el algoritmo publicado por Brett Beauregard y se modificó para satisfacer las necesidades concretas del presente proyecto. Es útil destacar que se seleccionó un modo de control que consiste en una combinación de la acción integral con la acción proporcional eliminando la acción derivativa.   
+Cuando el control es una válvula la acción derivativa no se utiliza. Porque la parte derivativa tiene justamente la propiedad de actuar en un porcentaje muy elevado de la salida ante variaciones muy pequeñas del error, es decir la entrada. Es la parte del algoritmo que se añadió al final de todo, para acelerar la acción de control. Por la naturaleza matemática    del algoritmo, la acción de control de la parte derivativa es muy elevada en porcentaje aunque el error sea pequeño, ante cualquier variación se establece un porcentaje de salida muy grande. Esto hace que ante cualquier pequeña variación del error, la válvula reaccione ante la salida fuertemente abriéndose y cerrándose. Estos movimientos repetitivos, lógicamente terminan rompiendo la válvula. Es por esto que la acción derivativa no se utiliza cuando el actuador del sistema de control es una válvula. 
 
 %A modo de ejemplo:
 %
