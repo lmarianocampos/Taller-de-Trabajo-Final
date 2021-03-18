@@ -75,9 +75,14 @@ headsepline, % Uncomment to get a line under the header
 %
 %The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too\ldots
 \centering
+El presente documento trata el diseño y construcción de un prototipo a escala para el control automático del caudal de agua a canal abierto. El sistema 
+desarrollado tiene como finalidad principal realizar una gestión eficiente de una red de canales. Esto permite resolver problemas de disponibilidad en regiones
+con cierto grado de sequía, así como mejorar el suministro a cada usuario y optimizar la gestión por parte del proveedor.
 
-El presente trabajo trata el diseño y construcción de un prototipo a escala, de un sistema de control de caudal de agua con salida a canal abierto.
-Como herramientas de trabajo, se aplicaron para la función de control, un algoritmo PID, como elemento actuador, se construyó una válvula de control servoalimentada, energizada por un motor paso a paso, y para la medición de la variable controlada, en este caso caudal, se fabricó un caudalímetro por placa de aforo triangular, cuyas características dimensionales se determinaron en forma empírica. La etapa de control cuyo componente principal es un microcontrolador con una arquitectura ARM - Cotex M4  cuenta con un sistema operativo de tiempo real, para aprovechar  la características relevantes del determinismo y la comunicación entre tareas, además sobre el mismo se desarrollaron interfaces de programación de aplicaciones(API) necesarias para la modularización del software.
+
+Se aplicó un algoritmo PID para la función de control. Se diseñó una válvula de control servoalimentada implementada con un motor paso a paso y se la utilizó como elemento actuador. La medición de la variable controlada, se realizó mediante un caudalímetro que fue diseñado e implementado mediante una placa de aforo triangular cuyas características dimensionales se determinaron en forma empírica. El componente principal de la etapa de control es un microcontrolador con arquitectura ARM Cortex-M4, en el que se implementó una aplicación que se ejecuta empleando un sistema operativo de tiempo real. 
+Además se desarrollaron interfaces de programación de aplicaciones (API) necesarias para la modularización del software. 
+
 
 
 \end{abstract}

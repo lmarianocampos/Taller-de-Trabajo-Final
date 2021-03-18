@@ -1,6 +1,6 @@
 % Chapter Template
 
-\chapter{Ensayos y Resultados} % Main chapter title
+\chapter{Ensayos y resultados} % Main chapter title
 
 \label{Chapter4} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
@@ -12,16 +12,16 @@ En este capítulo se detallan las pruebas realizadas durante el desarrollo del t
 }
 \label{sec:Ensayos de funcionamiento y calibración del sensor de presión
 }
-Se llevó a cabo pruebas acerca del correcto funcionamiento y calibración del sensor de presión MPX5010DP. Para esto, como primera instancia se utilizó un osciloscopio como instrumento de medición de la señal derivada del sensor, una fuente de alimentación de 5 voltios para la energización del dispositivo y finalmente una manguera flexible de cristal cuyo diámetro externo es de 5 mm y 3 mm de diámetro interno y 300 mm de largo. Un extremo de esta última se conecta a una de las espigas del sensor y el otro extremo se utiliza para introducir y evacuar agua mediante el uso de una jeringa. El propósito de este ensayo fue la adquisición datos para reconocer que el sensor presente un comportamiento lineal, Voltaje vs. KPa, como lo especifica su respectiva hoja de datos. Para eso, a medida que varía la altura de la columna de agua de la manguera se obtiene su correspondiente valor de tensión. De esta forma se logró generar una tabla con valores de tensión vs altura.       
-En la siguiente figura se puede apreciar que para cada valor de altura de columna de agua tiene asociado un valor de voltaje.  
+Se llevó a cabo pruebas acerca del correcto funcionamiento y calibración del sensor de presión MPX5010DP. Para esto, como primera instancia se utilizó un osciloscopio como instrumento de medición de la señal derivada del sensor, una fuente de alimentación de 5 voltios para la energización del dispositivo y finalmente una manguera flexible de cristal cuyo diámetro externo es de 5 mm y 3 mm de diámetro interno y 300 mm de largo. Un extremo de esta última se conecta a una de las espigas del sensor y el otro extremo se utiliza para introducir y evacuar agua mediante el uso de una jeringa. El propósito de este ensayo fue la adquisición datos para reconocer que el sensor presente un comportamiento lineal, Voltaje vs. Presión [KPa], como lo especifica su respectiva hoja de datos. Para eso, a medida que varía la altura de la columna de agua de la manguera se obtiene a la salida del sensor su correspondiente valor de voltaje. De esta forma, se logró generar una tabla con valores de Voltaje vs. Altura.       
+En la "Tabla \ref{tab:calibración del sensor-función patrón}", se puede apreciar que para cada valor de altura de columna de agua tiene asociado un valor de voltaje.  
 
 
 \begin{table}[h]
 	\centering
-	\caption[caption corto]{adquisición de datos para la calibración del sensor.}
+	\caption[Adquisición de datos para la calibración del sensor]{Adquisición de datos para la calibración del sensor.}
 	\begin{tabular}{c c c}    
 		\toprule
-		\textbf{Número de orden}     & \textbf{Altura[cm]} & \textbf{Voltios[V]} \\
+		\textbf{Número}     & \textbf{Altura[cm]} & \textbf{Voltios[V]} \\
 		\midrule
 		1  & 29,1          &  1.52 V \\		
 		2  & 28,1          &  1,48 V \\
@@ -37,11 +37,11 @@ En la siguiente figura se puede apreciar que para cada valor de altura de column
 		12 & 10,7          & 0,72 V \\
 		13 & 8,3           & 0,66  V \\
 		14 & 5,55          & 0,51 V \\
-		15 & 3,5          & 0,46 V \\
+		15 & 3,5           & 0,46 V \\
 		16 & 1,1           & 0,36 V \\
 		17 & 0,7           & 0,3 V \\
 		18 & 0,65          & 0,26 V \\
-		19 & 0 cm            & 0,25 V \\
+		19 & 0 cm          & 0,25 V \\
 	
 		\bottomrule
 		\hline
@@ -49,29 +49,30 @@ En la siguiente figura se puede apreciar que para cada valor de altura de column
 	\label{tab:calibración del sensor-función patrón}
 \end{table}
 
-A partir de los resultados arrojados como se puede ver en la "Tabla \ref{tab:calibración del sensor-función patrón}", se pudo trazar una gráfica que responde a una función lineal como se puede apreciar en la siguiente figura. 
-Es importante notar en la gráfica de la "Figura \ref{fig:Función patrón del sensor de presión calibrado: voltaje vs. altura}", que se encuentra presente un desplazamiento hacia arriba de la función de 0.250V respecto del eje de las abscisa, tal como lo especifica en la hoja de datos del sensor. Entonces para una altura de columna de agua de 0 cm el sensor está  entregando a su salida 0.250V. 
+A partir de los resultados conseguidos como se puede ver en la "Tabla \ref{tab:calibración del sensor-función patrón}", se pudo proyectar una gráfica que responde a una función lineal como se puede apreciar en la Figura \ref{fig:Función patrón del sensor de presión calibrado: voltaje vs. altura}". 
+Es importante notar en la gráfica de la "Figura \ref{fig:Función patrón del sensor de presión calibrado: voltaje vs. altura}", se encuentra presente un desplazamiento hacia arriba de la función de 0.250V respecto del eje de las abscisa, tal como lo especifica en la hoja de datos del sensor. Entonces para una altura de columna de agua de 0 cm el sensor está entregando a su salida 0.250V. 
 Por lo tanto, luego de esta comprobación se concluyó que el sensor presentó un correcto desempeño.
 
-\begin{figure}
+\begin{figure}[htpb]
 	\centering
 	\includegraphics[scale=.85]{./Figures/FuncionPatron-Sensor-VoltajeVsAltura.png}
 	\caption{Función patrón del sensor de presión calibrado: voltaje vs. altura.}
 	\label{fig:Función patrón del sensor de presión calibrado: voltaje vs. altura}
 	\end{figure}
+\vspace{2cm}	
+	
 \section{Calibración del sensor en el prototipo
 }
-\label{sec:Calibración del sensor en el prototipo
-}
-Una vez concluida la prueba de correcto funcionamiento del sensor y construido el prototipo se realizó un ensayo que consiste en la adquisición de datos mediante el empleo del firmware. Estos datos fueron valores de presión, de voltaje y de altura. Además, utilizando una regla estándar, se obtuvo el nivel de agua real en el prototipo. Así, de esta forma  se logró realizar un ajuste para la necesidad del trabajo en altura correspondiente a la columna de agua utilizando una regresión lineal.
-A continuación, en la "Tabla \ref{tab:calibración del sensor-función patrón}", se muestra  de los valores obtenidos en el ensayo realizados. Los mismos corresponden al rango de altura entre el suelo del canal y el vértice del caudalímetro.
+\label{sec:Calibración del sensor en el prototipo}
+Una vez concluida la prueba de correcto funcionamiento del sensor y construido el prototipo se realizó un ensayo que consiste en la adquisición de datos del sistema completo mediante el empleo del firmware. Los datos proporcionados por dicho firmware fueron valores de presión, de voltaje y de altura del nivel de agua. Además, utilizando una regla estándar como instrumento de medición, se obtuvo el nivel de agua real en el prototipo. Así, de esta forma se logró realizar un ajuste, para la necesidad del trabajo en altura correspondiente a la columna de agua, utilizando una regresión lineal.
+A continuación, la "Tabla \ref{tab:adquisición de datos del sistema I.}, muestra valores obtenidos en el ensayo realizado. Los mismos corresponden a un rango de altura comprendido entre el suelo del canal y el vértice del caudalímetro.
 
-\begin{table}[h]
+\begin{table}[htpb]
 	\centering
-	\caption[caption corto]{adquisición de datos del sistema.}
+	\caption[Adquisición de datos del sistema I]{Adquisición de datos del sistema I.}
 	\begin{tabular}{c c c c c}    
 		\toprule
-		\textbf{Número de orden}   & \textbf{Presión[Pa]}  & \textbf{Voltios[V]} & \textbf{Altura- Sistema [cm]} & \textbf{Altura- Real [cm]} \\
+		\textbf{Número}   & \textbf{Presión[Pa]}  & \textbf{Voltios[V]} & \textbf{Altura- Sistema [cm]} & \textbf{Altura- Real [cm]} \\
 		\midrule
 		1  & 0,065 & 0,229  & 0,66  & 1 \\
 		2  & 0,1   & 0,245  & 1,03  & 1,5 \\
@@ -102,11 +103,66 @@ A continuación, en la "Tabla \ref{tab:calibración del sensor-función patrón}
 		\bottomrule
 		\hline
 	\end{tabular}
-	\label{tab:adquisición de datos del sistema.}
+	\label{tab:adquisición de datos del sistema I.}
 \end{table}
-A partir de los valores expuestos en la "Tabla \ref{tab:adquisición de datos del sistema.}", podemos reconocer que la altura entre el suelo del canal y el vértice del caudalímetro es de 12,5 cm. Entonces, si el nivel de altura de agua es menor o igual que dicho valor el caudal de agua es equivalente a cero, ya que no supera la altura del vértice de dicho caudalimetro.
-En la siguiente tabla se aprecia que para una altura superior a los 12,5 cm, hay presencia de agua que fluye por la abertura de la placa de aforo, por lo que podemos obtener valores de caudal de agua, litros/minuto. 
+A partir de los valores expuestos en la "Tabla \ref{tab:adquisición de datos del sistema I.}", podemos reconocer que la altura entre el suelo del canal y el vértice del caudalímetro es de 12,5 cm. Entonces, si el nivel de altura de agua es menor o igual que dicho valor el caudal de agua es equivalente a cero, ya que no supera la altura del vértice de dicho caudalímetro.
+En la "Tabla \ref{tab:adquisición de datos del sistema II.}", se aprecia que para una altura superior a los 12,5 cm, hay presencia de agua que fluye por la hendidura de la placa de aforo, por lo que se puede obtener valores de caudal de agua, litros/minuto vs altura h de columna de agua.
+ 
+\begin{table}[htpb]
+	\centering
+	\caption[Adquisición de datos del sistema II]{Adquisición de datos del sistema II.}
+	\begin{tabular}{c c c c c c}    
+		\toprule
+		\textbf{Número}   & \textbf{Presión[Pa]}  & \textbf{Voltios[V]} & \textbf{Altura-Sistema [cm]} & \textbf{Altura-Real [cm]} & \textbf{Caudal[l/m]} \\
+		\midrule
+		25  & 1     & 0,706  & 11,52  & 13   &  0,1\\
+		26  & 1,19  & 0,735  & 12,18  & 13,6 &  0,3\\
+		27  & 1,269 & 0,771  & 12,91  & 14,4 &  1 \\
+		28  & 1,348 & 0,806  & 13,79  & 15,4 &  2,25 \\
+		29  & 1,419 & 0,839	 & 14,53  & 16,1 &  3,74\\
+		30  & 1,455 & 0,855  & 14,89  & 16,5 &  4,25\\
+		31  & 1,47  & 0,861	 & 15,04  & 16,6 &  4,75\\
+		32  & 1,491 & 0,871	 & 15,26  & 17,1 &  5,375\\
+		
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:adquisición de datos del sistema II.}
+\end{table}
 
+\vspace{3cm}
+
+De la "Tabla \ref{tab:adquisición de datos del sistema II.}", se puede deducir que el valor máximo y mínimo de caudal obtenido es de 5,375 y 0,1 l/m respectivamente.
+De la información obtenida a través de las mediciones que componen la "Tabla \ref{tab:adquisición de datos del sistema II.}", se extrajeron los valores correspondientes a las variables caudal y voltaje para construir la "Tabla \ref{tab:datos obtenidos para construir función polinómica de segundo grado.}".
+
+\begin{table}[htpb]
+	\centering
+	\caption{Datos obtenidos para construir función polinómica de segundo grado.}
+	\begin{tabular}{c c c }    
+		\toprule
+		\textbf{Número}   & \textbf{Voltios[V]} & \textbf{Caudal[l/m]}  \\
+		\midrule
+		1  & 0,706 & 0,1 \\
+		2  & 0,771 & 1 \\
+		3  & 0,806 & 2,25\\
+		4  & 0,839 & 3,74 \\
+		5  & 0,855 & 4,25  \\
+		6  & 0,861 & 4,75 \\
+		7  & 0,871 & 5,375 \\
+
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:datos obtenidos para construir función polinómica de segundo grado.}
+\end{table}
+Estos datos se utilizaron para esbozar una gráfica y comprobar que responde a una función polinómica como la ecuación del modelo que se expone en la sección 3.1.3 medidor de caudal. Seguidamente, en la "Figura \ref{fig:Función polinomica de segundo grado: caudal vs voltios}", se expone la gráfica obtenida y en la que se puede apreciar que manifiesta comportamientos de una función polinómica de segundo grado que involucra la variable caudal en función del voltaje.
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[scale=.85]{./Figures/FuncionPolinomica-Caudal.png}
+	\caption{Función polinomica de segundo grado: caudal vs voltios.}
+	\label{fig:Función polinomica de segundo grado: caudal vs voltios}
+	\end{figure}
 %\begin{table}[h]
 %	\centering
 %	\caption[caption corto]{caption largo más descriptivo}
