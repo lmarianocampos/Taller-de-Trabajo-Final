@@ -15,8 +15,8 @@ En este capítulo se abordarán temas referentes al análisis de la estructura d
 
 %Si en el texto se hace alusión a diferentes partes del trabajo referirse a ellas como capítulo, sección o subsección según corresponda. Por ejemplo: ``En el capítulo \ref{Chapter1} se explica tal cosa'', o ``En la sección \ref{sec:ejemplo} se presenta lo que sea'', o ``En la subsección \ref{subsec:ejemplo} se discute otra cosa''.
  
-Con el avance del diseño de un plano para la fabricación del prototipo para los diferentes ensayos, y con el método de aforo por compuerta a utilizar para la medición de caudal, ligeramente se identificó un inconveniente. Al emplear una compuerta se generarían filtraciones de agua en sus guías de desplazamiento. Como se trata de una maqueta a escala, las filtraciones provocarían errores considerables al momento de realizar las mediciones relacionadas a la altura de la superficie de agua, y cálculos pertinentes para determinar el caudal. Por lo tanto, en el sistema no se obtendrían los resultados esperados. En este contexto, el caudal producido en la compuerta sería menor que en el caudalímetro, instrumento ubicado en un punto distante de la compuerta en el sentido que fluye el líquido. De esta forma, obtendríamos dos valores de caudales diferentes debido, entre otros factores, a las filtraciones.     
-Esto motivo reemplazar, en el prototipo, la compuerta por una válvula y así eliminar los errores que introducen dichas filtraciones. 
+En un plano para la construcción del prototipo a escala, se pudo reconocer un inconveniente. Al emplear una compuerta que se desplaza verticalmente y ubicada en forma perpendicular al canal, se generarían filtraciones de agua en sus guías de desplazamiento. Como se trata de una maqueta a escala, estas filtraciones provocarían errores considerables al momento de realizar las mediciones relacionadas con la altura de la superficie de agua, y cálculos pertinentes al aplicar el método de aforo por compuerta para determinar el caudal. Por lo tanto, en el sistema no se obtendrían los resultados esperados. En este contexto, el caudal que circularía por debajo de la compuerta sería menor que el que se registraría en el caudalímetro. De esta forma, se obtendrían dos valores de caudales diferentes debido, entre otros factores, a las filtraciones.     
+Esto motivó a reemplazar, en el prototipo, la compuerta por una válvula y así eliminar los errores que introducen dichas filtraciones. 
 Para el control de la válvula se elaboró un servomotor con el empleo de un motor paso a paso con su correspondiente controlador.
 En la figura \ref{fig:Vertedero triangular}, se puede apreciar un vertedero triangular en un canal abierto y una regla que mide el nivel de la superficie de agua.
 \begin{figure}[h]
@@ -26,11 +26,11 @@ En la figura \ref{fig:Vertedero triangular}, se puede apreciar un vertedero tria
 \label{fig:Vertedero triangular}
 \end{figure}
 
-Para medir el caudal, se fabricó un caudalímetro por placa de aforo triangular. Estos tipos de instrumentos, también denominados vertederos, representan un dique o pared que intercepta en un determinado punto una corriente de liquido, en este caso agua, con superficie libre, como se puede apreciar en la "Figura 2.1" . En general, se utilizan para mantener un nivel de superficie de aguas arriba que no exceda de un valor limite, o bien para medir el caudal de agua circulante por un canal. Este instrumento resulta un medidor de caudal sencillo pero efectivo en canales abiertos. 
+Para medir el caudal, se fabricó un caudalímetro por placa de aforo triangular. Estos tipos de instrumentos, también denominados vertederos, representan un dique o pared que intercepta en un determinado punto una corriente de líquido, en este caso agua, con superficie libre, como se puede apreciar en la figura 2.1 . En general, se utilizan para mantener un nivel de superficie de aguas arriba que no exceda de un valor límite, o bien para medir el caudal de agua circulante por un canal. Este instrumento resulta un medidor de caudal sencillo pero efectivo en canales abiertos. 
 
-El principio de funcionamiento de la celda primaria, en el prototipo a escala, consiste en el control del eje de un servomotor, que por medio de un mecanizado entre dicho servomotor y una válvula, domina el movimiento de esta última y así establece el caudal de agua en el valor que desea fijar el usuario.
+El principio de funcionamiento de la celda primaria consiste en establecer el caudal de agua a un valor establecido por el usuario. Para llevar a cabo esto, fue necesario el desarrollo de un firmware que controla el eje de un servomotor. Este se encuentra adherido a una válvula, lo que permite maniobrar su rango de apertura para regular el flujo del fluido según las necesidades.
 
-El diagrama de control correspondiente es el que se muestra en la "Figura \ref{fig:CeldaPrimaria}". La salida del servomotor actúa directamente sobre la válvula, que en este caso es una llave esférica, pero podría ser sin ningún inconveniente un sistema de cremallera para abrir una compuerta vertical, como las que podemos encontrar con reiteración en los canales de agua a cielo abierto. La salida de la válvula es el flujo controlado de caudal al canal. En este punto se coloca un medidor de caudal. Luego su resultado se compara con el set point, valor de caudal fijado por el usuario. En el sumador, a partir de la diferencia que existe entre el set point y el valor de caudal medido se obtiene una señal de error, que seguidamente se procesa por un algoritmo de control PID para que sea igual a cero.
+El diagrama de control correspondiente es el que se muestra en la figura \ref{fig:CeldaPrimaria} donde se aprecia que la salida del servomotor actúa directamente sobre la válvula. Esta puede ser una llave esférica, como es este el caso, o un sistema de cremallera. Este tipo de sistemas se aplican a compuertas verticales, como las que podemos encontrar frecuentemente en los canales de agua a cielo abierto. La salida de la válvula es el flujo controlado de caudal al canal. En este punto se coloca un medidor de caudal. Luego su resultado se compara con el set point, valor de caudal fijado por el usuario. En el sumador, a partir de la diferencia que existe entre el set point y el valor de caudal medido se obtiene una señal de error, que seguidamente se procesa por un algoritmo de control PID para que sea igual a cero.
 
 \begin{figure}[htpb]
 \centering
@@ -42,8 +42,8 @@ El diagrama de control correspondiente es el que se muestra en la "Figura \ref{f
 \section{Compuertas Miller}
 \label{sec:Compuertas miller}
 Las compuertas Miller es el mecanismo más utilizado en los canales de agua de riego para controlar la entrada de agua de los canales ramales y tomas directas a las parcelas. Están construidas de fierro fundido (vaciado o colado) por su resistencia a la oxidación. Sin embargo, son frágiles y poco maleables. La toma Miller, en esencia, es una compuerta circular que obtura la entrada a la tubería de salida, la que es izada por un mecanismo elevador compuesto de un vástago cilíndrico con cuerda tipo tornillo (roscas), generalmente de 2” de diámetro y longitud variable, en función de la altura a colocar la toma y un volante. Las tomas-granja Miller se clasifican por el diámetro de la tubería a obturar, y son de 18” y 24” las más comunes para tomas-granjas, mientras que las de 30” y 36” son usadas para abastecer ramales y subramales.
-Las ventajas de este tipo de tomas es que son relativamente baratas, la mayoría de las fundidoras las pueden construir y son de fácil colocación. Como desventajas, destacan que pueden tener filtraciones de consideración al ser difícil un cierre hermético debido al metal de la tubería y de la compuerta (comal), especialmente si, durante su fundición, no hay cuidado de tener acabados completamente a nivel. La calibración de esta estructura es difícil, ya que al abrirse parcialmente la compuerta circular sobre la tubería circular, se forman secciones tipo “media luna” con área hidráulica variable, sin seguir un patrón de fácil cálculo. 
-En las figuras \ref{fig:Compuerta tipo miller para toma-granja}, \ref{fig:Conducto preparado para colocar compuerta tipo miller.} y \ref{fig:Conducto preparado para colocar compuerta tipo miller.} se pueden apreciar como es la estructura de la compuerta, el conducto para la toma y su colocación.
+Las ventajas de este tipo de tomas es que son relativamente baratas, la mayoría de las fundidoras las pueden construir y son de fácil colocación. Como desventajas, destacan que pueden tener filtraciones de consideración al ser difícil un cierre hermético debido al metal de la tubería y de la compuerta (comal), especialmente si, durante su fundición, no hay cuidado de tener acabados completamente a nivel. La calibración de esta estructura es difícil, ya que al abrirse parcialmente la compuerta sobre la tubería ambas de figura circular, se forman secciones tipo “media luna” con área hidráulica variable, sin seguir un patrón de fácil cálculo. 
+En las figuras \ref{fig:Compuerta tipo miller para toma-granja}, \ref{fig:Conducto preparado para colocar compuerta tipo miller.} y \ref{fig:Toma granja tipo miller de compuerta circular.} se puede apreciar como es la estructura de la compuerta, el conducto para la toma y su colocación.
 
 \begin{figure}[h]
 \centering
@@ -81,7 +81,7 @@ En esta sección se presentan los requerimientos específicos de software y hard
 \begin{enumerate}
 	\item El firmware deberá generar como señal, trenes de pulsos para controlar el movimiento del eje perteneciente al servomotor.
 	\item El firmware deberá determinar, mediante el sensor de presión en conjunto con la placa de aforo triangular, el caudal de agua que fluye a través de este instrumento de medición.
-	\item  El firmware deberá incluir un algoritmo de control PID, que por medio de un lazo de retroalimentación permita regular la variable a controlar.
+	\item  El firmware deberá incluir un algoritmo de control PID, que por medio de un lazo de retroalimentación permitiese regular la variable a controlar.
 	\item El firmware deberá ser capaz, a través de un pin configurado como salida, establecer el sentido de giro del eje del servomotor, horario - antihorario.
 	\item El firmware deberá ser capaz, a través de un pin configurado como salida, habilitar - deshabilitar el servomotor.
 	\item El firmware deberá interactuar, mediante el empleo del puerto serial, con otra aplicación. 	  
@@ -116,17 +116,24 @@ El driver MA860H es un controlador para motores paso a paso compatibles con moto
 	\item Entrada TTL compatible y ópticamente aislada.
 	\item Soporta modos PUL / DIR y CW / CCW.
 \end{enumerate}
+
 El MA860H tiene dos conectores, el conector P1 para conexiones de señales de control y el conector P2 para conexiones de potencia y motor.     
 Para el control de la válvula fue necesario un motor que pueda producir un momento de 1 Nm o más. 
-\subsubsection{Configuraciones del conector P1}
-PUL+,PUL-: Señal de pulso: esta entrada representa la señal de pulso, activa en cada flanco ascendente o descendente (para este trabajo se encuentra activo en flanco ascendente); 4-5V equivale a un pulso alto y 0-0.5V a un pulso bajo. Para una respuesta confiable, el ancho de pulso debe ser superior a 1,5 uS. 
-DIR+;DIR- : Señal DIR: esta señal tiene niveles de voltaje bajo / alto, que representan dos direcciones de rotación del motor. Para una respuesta de movimiento confiable, la señal DIR debe estar por delante de la señal PUL por lo menos 5 microsegundos. 4-5V cuando DIR-HIGH, 0-0.5V cuando DIR-LOW. 
 
-ENA+;ENA-: Señal de Habilitación: esta señal se utiliza para habilitar/deshabilitar el controlador. Nivel alto (la señal de control NPN, PNP y las señales de control diferencial son por el contrario, es decir, nivel bajo para habilitar) para habilitar al controlador y nivel bajo para inhabilitar al controlador.
+\subsubsection{Configuraciones del conector P1}
+\begin{itemize}
+
+\item Señal de pulso: esta entrada representa la señal de pulso, activa en cada flanco ascendente o descendente (para este trabajo se encuentra configurado en flanco ascendente). Entre 4V y 5V equivale a un pulso alto, entre 0V y 5V a un pulso bajo. Para una respuesta confiable, el ancho de pulso debe ser superior a 1,5 uS. 
+
+\item Señal de dirección: esta señal tiene niveles de voltaje bajo y alto, que representan dos direcciones de rotación del motor. Para una respuesta de movimiento confiable, la señal de dirección debe estar por delante de la señal de pulso por lo menos 5 uS. Entre 4V y 5V equivale a un pulso alto, entre 0V y 5V a un pulso bajo.
+
+\item Señal de habilitación: esta señal se utiliza para habilitar/deshabilitar el controlador. Nivel alto para habilitar y nivel bajo para inhabilitar al controlador.
+
+\end{itemize}
 \subsection{Sensor de presión}
 Para monitorizar el nivel de la columna de agua, necesario para determinar el caudal en un determinado instante, se optó por su alta precisión un sensor de presión cuyo modelo es MPX5010DP. Este transductor piezo-resistivo, es un sensor de presión de silicio monolítico que puede ser utilizado en aplicaciones que disponen de un microcontrolador o microprocesador con entradas ADC.
 El MPX5010DP entrega a su salida un rango de voltaje entre 0V y 5V, mediante esta información y una fórmula que se expone en el siguiente párrafo se puede estimar la presión hasta un valor de 10 KPa, esto es, una columna de agua de hasta 100 cm de altura.
-El dispositivo proporciona una salida lineal como puede se observar en la "Figura \ref{fig:función de salida del sensor}", extraída de su hoja de datos.
+El dispositivo proporciona una salida lineal como puede se observar en la figura \ref{fig:función de salida del sensor}, extraída de su hoja de datos.
 
 \begin{figure}[h]
 \centering
@@ -134,13 +141,14 @@ El dispositivo proporciona una salida lineal como puede se observar en la "Figur
 \caption{Función de salida del sensor de presión MPX5010DP.}
 \label{fig:función de salida del sensor}
 \end{figure}
-Como se pudo observar la función de la "figura \ref{fig:función de salida del sensor}", la ecuación para obtener la presión del sensor viene dada por la ecuación \ref{eq:presion}:
+Como se pudo observar la función de la figura \ref{fig:función de salida del sensor}, la ecuación para obtener la presión del sensor viene dada por la ecuación \ref{eq:presion}:
 
 \begin{equation}
  \label{eq:presion}
  P = \frac{Vout- 0.04*Vs \pm Tol}{0.09*Vs}
 \end{equation}
 
+\vspace{3cm}
 Donde:\\
 \begin{itemize}
 \item Vs: es el valor de voltaje de alimentación, Vs = 5V.\\
@@ -151,7 +159,7 @@ Donde:\\
 Tomando como base la ecuación de presión diferencial que relaciona la altura se resuelve que (recordando que a la presión atmosférica normal es cero):  
 
 \begin{equation}
- \label{eq:presión}
+ \label{eq:presiónII}
 	 P =PH -PL= P = \rho gh =\frac{Vout- 0.04*Vs \pm Tol}{0.09*Vs}	
 \end{equation}
  Donde:
@@ -162,18 +170,12 @@ Tomando como base la ecuación de presión diferencial que relaciona la altura s
  \item h: es el nivel de la columna líquida.
  \end{itemize}
  
-La disposición de los pines del dispositivo lo podemos advertir en la figura \ref{fig:disposición de pines del sensor}:
-\begin{figure}[h]
-\centering
-\includegraphics[scale=.65]{./Figures/DisposicionDePinesSensor.png}
-\caption{Disposición de pines del sensor de presión MPX5010DP.}
-\label{fig:disposición de pines del sensor}
-\end{figure}
-\vspace{1cm}
+
+%\vspace{1cm}
 Siendo: 
 \begin{itemize}
 \item la densidad de agua $\rho$=1000 kg/m3  
-\item la gravedad g=10 ms/2
+\item la aceleración de la gravedad g=10 ms/2
 \end{itemize}
 la ecuación resultante para obtener h es: 
 
@@ -182,9 +184,18 @@ la ecuación resultante para obtener h es:
 	 h = \frac{P}{g*\rho}	
 \end{equation}
 
+\vspace{2cm}
+La disposición de los pines del dispositivo lo podemos advertir en la figura \ref{fig:disposición de pines del sensor}:
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.65]{./Figures/DisposicionDePinesSensor.png}
+\caption{Disposición de pines del sensor de presión MPX5010DP.}
+\label{fig:disposición de pines del sensor}
+\end{figure}
+
 \section{Planificación}
 \label{sec:planificacion}
-La planificación original presentada al iniciar el proyecto contemplaba un trabajo de 600 horas. Los atrasos relacionados con la problemática identificada y expuesta en la sección \ref{sec:estructgeneralsistema}, significó repensar un nuevo prototipo con una válvula de control  mecanizada. Esto, implicó recurrir a una empresa dedicada a la mecanización de piezas para adaptar el servomotor y una válvula esférica. Como consecuencia de esto, no se pudo contar en tiempo y forma con la pieza total, por lo que se tuvo que modificar la planificación inicial. 
+La planificación original presentada al iniciar el proyecto contemplaba un trabajo de 600 horas. Los atrasos relacionados con la problemática identificada y expuesta en la sección \ref{sec:estructgeneralsistema}, significó repensar un nuevo prototipo con una válvula de control  mecanizada. Esto implicó recurrir a una empresa dedicada a la mecanización de piezas para adaptar el servomotor y una válvula esférica. Como consecuencia de esto, no se pudo contar en tiempo y forma con la pieza total, por lo que se tuvo que modificar la planificación inicial. 
 En la tabla \ref{tab:seccplanificacion} se detalla el desglose de tareas pertinente a la planificación original. 
 \begin{table}[h]
 	\centering
@@ -195,7 +206,7 @@ En la tabla \ref{tab:seccplanificacion} se detalla el desglose de tareas pertine
 		\midrule
 		1.   & Documentación y Análisis Preliminar	&  19 \\		
 		1.1  & Planificación del proyecto			&  24 \\
-		1.2  & Análisis de bibliográfica especifica &  20 \\
+		1.2  & Análisis de bibliografía especifica &  20 \\
 		1.3  & Definición de casos de pruebas		&  15 \\
 		2.   & Investigación, Diseño e Implementación & 127 \\
 		2.1  & Inicialización del entorno de trabajo  & 34\\

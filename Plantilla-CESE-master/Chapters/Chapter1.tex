@@ -23,9 +23,10 @@ Este capítulo introduce al lector sobre la conformación de una red de canales 
 %----------------------------------------------------------------------------------------
 \section{Descripción del estado actual sobre el manejo de agua en canales abiertos}
 
-Una red de canales de riego es preponderantemente una zona geográfica que puede definirse como un conjunto de canales de riego, una o más fuentes comunes de abastecimiento de agua y las áreas de cultivo, relativamente compactas, que cuenta con decreto de creación por parte del poder ejecutivo, con un título de concesión otorgado a los usuarios organizados en asociaciones civiles para uso de las aguas y la administración, operación y conservación de la infraestructura hidroagrícola.
+Una red de canales de riego es una importante zona geográfica que puede definirse como un conjunto de canales de riego. Estos se componen por una o más fuentes comunes de abastecimiento. Su función principal es conducir el agua desde la captación hasta los
+campos agrícolas o parcelas donde se aplicarán a los cultivos. Por decreto del poder ejecutivo se otorgan títulos de concesión a usuarios que se encuentran agrupados en asociaciones civiles para el uso, administración, operación y conservación tanto del agua como de la infraestructura hidrológica.
 Puede concluirse que una red de canales de riego es mucho más que una colección de agua, infraestructura y superficie, ya que implica además aspectos legales, administrativos, socioeconómicos y productivos muy importantes e interdependientes entre sí.
-Para tener una idea más general sobre cómo esta constituido generalmente un conjunto de red de canales de riego, la figura \ref{fig:canal}, brinda mayores detalles.
+Para tener una idea más general sobre cómo está constituido generalmente un conjunto de red de canales de riego, la figura \ref{fig:canal}, brinda mayores detalles.
 
 \begin{figure}[h]
 \centering
@@ -66,19 +67,19 @@ Además, se puede apreciar que involucra la utilización de diferentes herramien
 \label{fig:DiagramaEnBloqueGeneralV1}
 \end{figure}
 
-El esquema de la "figura \ref{fig:DiagramaEnBloqueGeneralV1}", tiene por objetivo principal resolver los problemas de disponibilidad en regiones que presentan, entre otros factores, cierto grado de sequía. Además, no sólo busca maximizar la eficiencia en el abastecimiento a cada uno de los usuarios en tiempo y forma, sino también minimizar las pérdidas en las redes de canales, y así, poder brindar mayor seguridad en el suministro de agua para el riego a cada productor en sus predios.
+El esquema de la figura \ref{fig:DiagramaEnBloqueGeneralV1}, tiene por objetivo principal resolver los problemas de disponibilidad en regiones que presentan, entre otros factores, cierto grado de sequía. Además, no sólo busca maximizar la eficiencia en el abastecimiento a cada uno de los usuarios en tiempo y forma, sino también minimizar las pérdidas en las redes de canales, y así, poder brindar mayor seguridad en el suministro de agua para el riego a cada productor en sus predios.
 Con base en lo descrito, se puede también determinar que el principal beneficiario al optimizar la gestión del vital recurso hídrico es el proveedor de dicho recurso.
 
 El esquema presentado, esta compuesto principalmente por la automatización de cada una de las compuertas que constituyen la red y un centro de monitoreo donde reside el sistema principal. La comunicación de las compuertas entre sí y el sistema principal se llevará a cabo mediante el empleo de la tecnología LoraWan. Esta red de baja potencia y de área amplia ofrece la posibilidad de comunicar puestos de trabajo o dispositivos cuyas distancias pueden circunscribirse desde unos pocos hasta varios kilómetros de separación. Algunos puntos se encuentran situados en zonas donde la cobertura telefónica, internet y energía eléctrica no tienen alcance. Para resolver la carencia de energía eléctrica, se utilizaría energía solar fotovoltaica. Además, se desarrollará una aplicación móvil para que el operario realice gestiones de forma remota.
 
-En relación a la automatización de las compuertas es prácticamente idéntica en cada una de ellas. En la figura \ref{fig:DiagramaEnBloqueGeneralV1}, podemos apreciar que es necesario la utilización de un motor, un microcontrolador como componente principal, un caudalímetro  para monitorear el flujo de agua un determinado instante, un panel solar y un dispositivo perteneciente a la tecnología LoraWan que admite la comunicación entre los diversos puestos o puntos de trabajo.
+En relación a la automatización de las compuertas es prácticamente idéntica en cada una de ellas. En la figura \ref{fig:DiagramaEnBloqueGeneralV1}, podemos apreciar que es necesario la utilización de un motor, un microcontrolador como componente principal, un caudalímetro  para monitorear el flujo de agua en un determinado instante, un panel solar y un dispositivo perteneciente a la tecnología LoraWan que admite la comunicación entre los diversos puestos o puntos de trabajo.
 
-El funcionamiento a nivel sistema, será realizar los movimientos necesarios de compuertas para establecer la cantidad de agua en tiempo y forma. Esta maniobra será llevada a cabo por el operario desde el centro de monitoreo o bien se podrá definir una determinada maniobra preprogramada. De modo que el sistema trabaje de forma autónoma,por medio de comunicaciones entre las compuertas.  
+El funcionamiento a nivel sistema sería, realizar movimientos necesarios de diversas compuertas para suministrar la cantidad de agua en tiempo y forma. Esta maniobra se llevaría a cabo por el operario desde el centro de monitoreo o bien se podría definir una determinada maniobra preprogramada. De modo que el sistema trabajaría de forma autónoma,por medio de comunicaciones entre compuertas.  
 
 
-Se denominó celda primaria a una fracción pequeña del sistema global que en general es el más repetido con frecuencia, y que se encuentra dispuesto en cada una de las compuertas.
-Esta celda primaria, en términos generales, está constituida principalmente por un firmware que controla el movimiento de una compuerta por medio de un motor eléctrico y utilizando un caudalímetro, se regula el caudal de agua a un valor determinado definido por el usuario.
-A modo de inicio de este proyecto global, este documento describe de forma detallada la construcción de un prototipo a escala que permite ejecutar esta celda primaria perteneciente al sistema completo y que se puede apreciar en la "Figura \ref{fig:SistemaBase}".
+Se denominó celda primaria a una fracción pequeña del sistema global que en general, se reitera en cada una de las compuertas que integran una red de canal.
+Esta celda primaria, en términos generales, está constituida principalmente por un firmware que controla el movimiento de una compuerta por medio de un motor eléctrico y utilizando un caudalímetro, se regula el caudal de agua a un valor especificado por el usuario.
+A modo de inicio de este proyecto global, este documento describe de forma detallada la construcción de un prototipo a escala que permite ejecutar esta celda primaria perteneciente al sistema completo y que se puede apreciar en la figura \ref{fig:SistemaBase}.
 \begin{figure}[htpb]
 \centering
 \includegraphics[scale=.40]{./Figures/SistemaBase-V2.jpg}
@@ -113,23 +114,8 @@ En la provincia de Jujuy, más precisamente el Consorcio de Riego del Valle de P
 A lo largo del desarrollo de este proyecto los administradores brindaron información al respecto y también mencionaron las dificultades que resultan de realizar movimientos de compuertas que se encuentran realmente alejadas a varios kilómetros en diferentes puntos de la provincia y que en muchas circunstancias se deben visitar dos o más veces al día elevando los costos de traslados. 
 
 Por otro lado, en la provincia de La Rioja, el principal inconveniente que presentan los productores pequeños que subsisten del agua superficial, es la falta de agua. Hay una gran cantidad de superficie que ocupan estos productores con diversos cultivos. Por lo que hay una gran superficie ocupada y el agua que se les suministra a cada uno en los turnados no les alcanza a cubrir las necesidades hídricas del cultivo. Esta necesidad se intensifica principalmente en los meses de octubre, noviembre y diciembre.
-Las principales causas de la falta de disponibilidad del recurso se debe a ineficientes tomas de agua que no captan la totalidad, deficiencia en el control de aperturas y cierres de compuertas, conducción y la falta de control de caudal, debido  la inexistencia de instrumentos de medición en toda la red que registren las variaciones mensuales. Por la sencilla manipulación de las compuertas, existen casos de consumo ilegal por parte de usuarios con la intención de conducir el agua hacia sus cultivos.
-
-Estas causas son las que motivaron llevar a cabo este proyecto.
-%La gestión de canales y redes de distribución de agua en la mayoría de las regiones del país se basa en operaciones de control manual en la que los operarios supervisan el estado de cada elemento y actúan en función de protocolos establecidos.
-%		
-%Hoy por hoy, estos procedimientos presentan una capacidad de reacción lenta ante la demanda variable de cada uno de los usuarios de agua,  ya que los operarios, en ocasiones deben recorrer varios kilómetros por lo que esto, representa un costo sumamente elevado mantener este servicio.
-%
-%Este proyecto, además de regular el caudal de agua en canal abierto podrá resolver los problemas referentes a la disponibilidad de agua en regiones que presentan escasez por diferentes factores, no solo por sequías. Asimismo, no sólo busca maximizar la eficiencia en el abastecimiento de agua a cada uno de los usuarios en tiempo y forma, sino también minimizar la pérdida de la misma en la red de canales, y así, de esta manera, poder brindar mayor seguridad en el suministro de agua para el riego a cada productor en sus predios.
-%
-%De este modo, se podrá obtener mejoras en la calidad de sus productos y por sobre todo, mayores rendimientos en su producción. El riego es la labor cultural que mayor impacto tiene sobre el rendimiento y la calidad en los productos. 
-%
-%A fin de minimizar errores que introduce al trabajar con un prototipo formado por una compuerta esta fue reemplazada por una válvula, ya que de esta forma permite trabajar sin filtraciones de agua y mayor precisión en la medición.   	  
-%Es importante aclarar que una red o las redes de canales se encuentran separadas por compuertas. En el prototipo la válvula simula ser una compuerta.
-%
-%Uno de los objetivos planteados para una segunda fase de desarrollo es instanciar, este sistema desarrollado en el presente informe, en varias compuertas que constituye una red de canal de modo tal, que las mismas se comuniquen entre sí utilizando tecnología LoraWan y lograr como sistema general se ejecute de forma autónoma.  
-
-%Con el presente sistema de control también se busca promover la recuperación del potencial productivo de los suelos agropecuarios  que se han degradado por diferentes factores, entre ellos la escasez de agua. 
+Las principales causas de la falta de disponibilidad se deben a la ineficiencia de los sistemas de recolección de agua que no aseguran una óptima captación y a la deficiencia en la supervisión de apertura, cierre de compuertas y conducción. Además, se suma la falta de verificación de caudal, debido a la inexistencia de un instrumento de medición que registre variaciones.
+Por la sencilla manipulación de las compuertas, existen casos de consumo ilegal por parte de usuarios con la intención de conducir el agua hacia sus cultivos. Estas causas son las que motivaron llevar a cabo este proyecto.
 
 En este punto es importante destacar que no existen soluciones nacionales, por lo tanto,  el desafío es lograr ser competitivo en precio y prestaciones con respecto a productos importados que se encuentran en el mercado. Esto trae aparejado, desde el punto vista del cliente el beneficio de contar con soporte local y la posibilidad de modificar algún aspecto del sistema según las necesidades del cliente.
 
