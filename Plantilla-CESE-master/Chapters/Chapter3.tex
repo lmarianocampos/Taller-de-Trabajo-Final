@@ -1,5 +1,5 @@
 \chapter{Diseño e implementación} % Main chapter title
-En este capítulo se exponen las tomas decisiones relacionadas al diseño e implementación relacionada al hardware y firmware a lo largo del desarrollo del trabajo. 
+En este capítulo se exponen las tomas decisiones referidas al diseño e implementación relacionada al hardware y firmware a lo largo del desarrollo del trabajo. 
 \label{Chapter3} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
@@ -49,7 +49,7 @@ En este capítulo se exponen las tomas decisiones relacionadas al diseño e impl
 En la elaboración del prototipo se creó una caja desmultiplicadora de fuerza con la finalidad de dirigir el recorrido de apertura y cierre de una válvula. Para la generación de estos movimientos se utilizó un servomotor paso a paso.
 
 La válvula es un ensamblaje compuesto de un cuerpo con conexión a una tubería y de un obturador operado por accionamiento. Su función principal es variar el caudal del fluido que circula a través de ella, comportándose como un orificio cuya área está continuamente variando. 
-Generalmente el obturador, conforme se va desplazando produce un área de pasaje que posee una determinada relación característica entre la fracción de carrera y el caudal correspondiente que se escurre a través de ella. Esta relación recibe el nombre de característica inherente de caudal de válvula.
+Generalmente el obturador, conforme se va desplazando, produce un área de pasaje que posee una determinada relación característica entre la fracción de carrera y el caudal correspondiente que se escurre a través de ella. Esta relación recibe el nombre de característica inherente de caudal de válvula.
 
 Particularmente, para este trabajo se utilizó una válvula cuya característica inherente es tipo de apertura rápida. Se trata de una propiedad que produce una variación grande de caudal con una carrera pequeña. Esto posibilita el pasaje de casi la totalidad del caudal nominal con apenas una abertura de 25 \% de la carrera total.
 De esta forma, genera una ganancia muy alta a bajas aperturas de carrera y una ganancia muy baja en aperturas por encima de 60 \% de carrera total. 
@@ -65,7 +65,7 @@ La figura \ref{fig:grafica caudal vs. apertura de valvula}, muestra la curva tí
 \subsection{Servomotor}
 \label{subsec:Servomotor}
 
-Los componentes principales para la construcción del servomotor fueron un motor paso a paso, un controlador, un sensor resistivo de ángulo y una entrada ADC del microcotnrolador.
+Los componentes principales para la construcción del servomotor fueron un motor paso a paso, un controlador, un sensor resistivo de ángulo y una entrada ADC del microcontrolador.
 
 
 \subsubsection{Circuito interfaz del conector de señal de control P1}
@@ -79,7 +79,7 @@ En cuanto a la conexión entre el microcontrolador y el controlador fue necesari
 \label{fig:circuito interfaz}
 \end{figure}
 
-Siguiendo las recomendaciones del fabricante relacionadas a la construcción del circuito interfaz entre el diver y el microcontrolador se diseñó y fabricó el circuito eléctrico que se muestra en la figura \ref{fig:esquemático circuito interfaz}.
+Siguiendo las recomendaciones del fabricante relacionadas a la construcción del circuito interfaz entre el driver y el microcontrolador se diseñó y fabricó el circuito eléctrico que se muestra en la figura \ref{fig:esquemático circuito interfaz}.
 
 \begin{figure} [htpb]
 \centering
@@ -96,7 +96,8 @@ Por lo tanto, se puede decir que la etapa de potencia está formada por el circu
 El servomotor está compuesto también por una fracción del firmware que comprende la parte inteligente del dispositivo fabricado.
 Asimismo, es el encargado de establecer al obturador de la válvula en una determinada posición y así proporcionar a su salida el caudal de agua requerido por el usuario. 
 Para esto fue indispensable obtener una estimación del porcentaje de apertura de la válvula. Por ello, se empleó un sensor resistivo de ángulo cuya señal se inyecta de forma retroalimentada a una de las entradas ADC del microcontrolador para su procesamiento. Este dispositivo adosado al eje de la válvula es un potenciómetro de una vuelta de 50 K$\Omega$ cuyo modelo es 91A-503, Bourns Cermet.
-En la figura \ref{fig:Diagrama en bloque de la celda primaria}, se puede apreciar un diagrama en bloque general que indica entre otras partes del trabajo, cómo está constituido el servomotor. Cada componente se encuentra delimitado en líneas punteadas de forma tal, que se puede tener una idea qué partes pertenecen al servomotor y al microcontrolador.   
+
+En la figura \ref{fig:Diagrama en bloque de la celda primaria}, se puede apreciar un diagrama en bloque general que indica entre otras partes del trabajo, cómo está constituido el servomotor. Cada componente se encuentra delimitado en líneas punteadas de forma tal, que se puede tener una idea sobre qué partes pertenecen al servomotor y al microcontrolador.   
    
 
 \begin{figure}[htpb]
@@ -176,7 +177,7 @@ Teniendo en cuenta la ecuación \ref{eq:caudal}
 \item H: nivel de agua en metros
 \end{itemize}
 
-Los medidores de caudal con aforo triangular como el utilizado en el presente trabajo, responden a una ecuación del modelo que se expone arriba obtenida empíricamente. En el caso de este proyecto y por tratarse de un prototipo a escala, es un medidor que se usará por única vez, por lo tanto la tabla de calibración del caudalímetro fue obtenida experimentalmente.  
+Los medidores de caudal con aforo triangular como el utilizado en el presente trabajo, responden a una ecuación del modelo que se expone arriba obtenida empíricamente.El medidor utilizado en este proyecto se usó por única vez, por lo tanto la tabla de calibración del caudalímetro fue obtenida experimentalmente.  
 En la figura \ref{fig:alturas vertedero}, se detalla la vista de frente del canal con el vertedero triangular y los diversos niveles de altura que se consideraron al momento de realizar las mediciones pertinentes. 
 
 \begin{figure}[htpb]
@@ -191,16 +192,16 @@ Por lo tanto, este caudalímetro de canal abierto por sistema de aforo utiliza c
 
 Esta señal proveniente del sensor en conjunto con un algoritmo de control PID, permite regular el caudal de agua en un determinado valor preestablecido. 
 
-Una vez construido el prototipo, se realizó una calibración de caudal obteniéndose una tabla Caudal vs $H_{total}$ (altura). Por lo que, en el firmware esta tabla es utilizada para obtener el valor de caudal  en lugar de la fórmula presentada.
+Una vez construido el prototipo, se realizó una calibración de caudal obteniéndose una tabla de Caudal vs $H_{total}$ (altura). Esta es utilizada en el firmware para obtener el valor de caudal en lugar de la fórmula presentada.
 
 \section{Software}
 \subsection{Arquitectura de software}
 \label{subsec:Arquitectura de software}
 
-Durante la definición de la arquitectura de software se seleccionaron dos  y se integraron para confeccionar una híbrida, de modo tal que se adapte a las necesidades concretas de este proyecto. Por un lado, se seleccionó una arquitectura que está conformada por tres capas claramente definidas.
-En la capa HAL se encuentran los drivers encargados de abstraer los detalles de acceso al hardware. De esta forma, facilitará la migración a otro microcontrolador en caso de que en el futuro hiciese falta. Adicionalmente, permite una mayor claridad en la implementación, al separar los drivers de la lógica de la aplicación.
-Debido a que en producción se utilizará como hardware a la CIAA-NXP y durante el desarrollo la EDU-CIAA-NXP, se empleó el firmware de la CIAA versión 3.0 como capa de abstracción de hardware. 
-En la capa de aplicación se encuentran todos los componentes que encapsulan la lógica de aplicación, y finalmente, la tercera corresponde al sistema operativo de tiempo real FreeRTOS.
+Durante la definición de la arquitectura de software se seleccionaron dos  y se las integraron para confeccionar una híbrida, de modo tal que se adapte a las necesidades concretas de este proyecto. Por un lado, se seleccionó una arquitectura que está conformada por tres capas claramente definidas.
+En la capa HAL se encuentran los drivers encargados de abstraer los detalles de acceso al hardware. De esta forma, facilitará la migración a otro microcontrolador en caso de que en el futuro hiciera falta. Adicionalmente, permite una mayor claridad en la implementación, al separar los drivers de la lógica de la aplicación.
+Debido a que en la producción se utilizará como hardware a la CIAA-NXP y durante el desarrollo a la EDU-CIAA-NXP, se empleó el firmware de la CIAA versión 3.0 como capa de abstracción de hardware. 
+En la capa de aplicación se encuentran todos los componentes que encapsulan la lógica de aplicación, y finalmente, la tercera corresponde al sistema operativo de tiempo real FreeRTOS \citep{FREERTOS}.
 El sistema incluye sensores que proveen información relacionada al ámbito a controlar y un actuador para operar sobre el sistema. Por lo tanto, en respuesta a las alteraciones identificadas por los sensores, se envían señales de control a los actuadores. Entonces, al identificar que el sistema debe poseer este tipo de comportamiento se definió emplear una arquitectura de tiempo real inherente al “Control Ambiental” \citep{INGSOF} , ya que este patrón de arquitectura de software brinda la posibilidad de recopilar datos del entorno por medio de sensores como así también el estado en el que se encuentran los actuadores conectados al sistema. Con base en datos reunidos de sensores y actuador, se envían señales de control hacia el actuador para producir cambios en el entorno controlado. En la figura \ref{fig:Arquitectura de software}, se puede ver el diagrama del patrón arquitectónico que es la base del diseño del sistema de control, y además utilizado en la capa aplicación. 
 
 \begin{figure}[htpb]
@@ -223,7 +224,7 @@ Cada capa de software es considerada un componente de software. Con lo cual se p
 \item Sistema Operativo
 \item Aplicación
 \end{itemize}
-\vspace{1cm}
+%\vspace{1cm}
 A su vez, la capa de aplicación está compuesta por los siguientes componentes de software:
 
 \begin{itemize}
@@ -281,11 +282,11 @@ En esta subsección se incluye el diseño detallado de cada uno de los component
 	\label{fig:Proceso de Control PID}
 	\end{figure}
 	
-\vspace{3cm}
+%\vspace{3cm}
 
 \subsection{Casos de uso}
 \label{subsec:Casos de uso}
-En la etapa de captura de requerimientos funcionales que el sistema debía satisfacer, se emplearon casos de uso correspondientes al Lenguaje Unificado Modelado (UML) \citep{LIBROUML}. Esta técnica es de mucha utilidad y permite especificar, visualizar, construir y documentar los requisitos del sistema especialmente en sistemas con un alto grado de interacción hombre/máquina. 
+En la etapa de captura de requerimientos funcionales que el sistema debía satisfacer, se emplearon casos de uso correspondientes al Lenguaje Unificado Modelado (UML) \citep{LIBROUML}. Esta técnica es de mucha utilidad y permite especificar, visualizar, construir y documentar los requisitos del sistema especialmente en sistemas con un alto grado de interacción hombre/máquina \citep{PLANTUML}. 
 En las tablas \ref{tab:detectar el nivel de agua del canal} y \ref{tab:establecer un determinado valor de caudal.} se presentan dos casos de uso que se documentaron como parte integral de la especificación de requisitos del software del equipo.
 
 
@@ -430,7 +431,7 @@ El firmware deberá quedar operativo y en correcto funcionamiento y en condicion
 Previo al desarrollo del firmware, se realizó un diagrama de clase, que se puede apreciar en la figura \ref{fig:Diagrama de clase.}. 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=.65]{./Figures/DiagramaDeClase-DistribucionDeAgua.png}
+	\includegraphics[scale=.75]{./Figures/DiagramaDeClase-DistribucionDeAgua.png}
 	\caption{Diagrama de clase.}
 	\label{fig:Diagrama de clase.}
 	\end{figure}
@@ -442,12 +443,12 @@ Previo al desarrollo del firmware, se realizó un diagrama de clase, que se pued
 
 \item Stepper Motor: este módulo posee todas las funciones inherentes al control del motor paso a paso. Interactúa con el módulo Servomotor para integrar las características de un servomotor convencional. 
 
-\item Servomotor: este módulo tiene como propósito establecer en cierta posición al obturador a través de la generación de una señal de tren de pulsos. Esto se realiza mediante una comparación entre la salida del algoritmo de control PID y la señal del sensor resistivo de ángulo. Cuando la comparación resulta igual a cero implica que alcanzó situar el obturador en la posición deseada. 
+\item Servomotor: este módulo tiene la misión de establecer en cierta posición al obturador a través de la generación de una señal de tren de pulsos. Esto se realiza mediante una comparación entre la salida del algoritmo de control PID y la señal del sensor resistivo de ángulo. Cuando la comparación resulta igual a cero implica que alcanzó situar el obturador en la posición deseada.
 
-\item PID: este módulo implementa un algoritmo de control PID que se ejecuta cada un segundo para cuantificar el error o desviación que existe entre el valor de caudal medido a través del sensor de presión y el valor deseado. Interactúa con suficiente frecuencia con el módulo servomotor.
+\item PID: este módulo implementa un algoritmo de control PID que se ejecuta cada un segundo para cuantificar el error o desviación que existe entre el valor de caudal medido a través del sensor de presión y el valor deseado.
 \end{itemize}
 
-
+\vspace{1cm}
 \subsection{Protocolo de comunicación}
 \label{subsec:Protocolo de comunicación}
 Se definió un paquete de datos para que una aplicación externa y el firmware puedan interaccionar de modo tal que permita verificar el correcto funcionamiento del sistema. 
@@ -462,7 +463,7 @@ A continuación se presentan las principales funciones que debe ejecutar el moto
 \item Cantidad de vueltas a girar.
 \end{enumerate}
 
-Luego que se reconoció el funcionamiento que debe desempeñar el servomotor, se procedió a especificar los comandos válidos para la comunicación entre el firmware y la aplicación externa.
+Luego que se reconoció el funcionamiento que debe desempeñar el servomotor, se procedió a especificar los comandos admitidos para la comunicación entre el firmware y la aplicación externa. En la tabla \ref{tab:descripción de comandos} se presenta cada uno de los comandos con su respectiva explicación.  
 
 \begin{table}[H]
 \centering
@@ -550,7 +551,7 @@ NA & Devuelve el valor de altura del nivel\\
 %
 %\end{itemize}
 
-Al final de cada una de las tramas, se incorpora el carácter de salto de línea que indica el límite final del comando. Una vez recibido, la tarea command processing lo procesa, de forma que si presenta un error, el firmware envía por el mismo medio una cadena de notificación “comando invalido”, caso contrario “comando válido”. 
+Al final de cada una de las tramas, se incorpora el carácter de salto de línea que indica el límite final del comando. Una vez recibido, el sistema lo procesa, de forma que si presenta un error, el firmware envía por el mismo medio una cadena de notificación “comando inválido”, caso contrario “comando válido”. 
 
 \subsection{Algoritmo PID}
 \label{subsec:Algoritmo PID}
@@ -574,15 +575,16 @@ Donde:\\
 \end{itemize}
 
 
-El mismo está basado en el algoritmo publicado por Brett Beauregard \citep{ALGORITMOPID} y se modificó para satisfacer las necesidades concretas del presente proyecto. Es relevante destacar que se seleccionó un modo de control que consiste en una combinación de la acción integral con la acción proporcional eliminando la acción derivativa. Por lo que la ecuación \ref{eq:PID} queda de la siguiente forma:
+El mismo está basado en el algoritmo publicado por Brett Beauregard \citep{ALGORITMOPID} y se modificó para satisfacer las necesidades concretas del presente proyecto. Es relevante destacar que se seleccionó un modo de control que consiste en una combinación de la acción integral con la acción proporcional, y eliminar la acción derivativa. Por lo que la ecuación \ref{eq:PID} queda de la siguiente forma:
    
 \begin{equation}
  \label{eq:PID sin termino derivativo}
 Salida =  \frac{100}{BP} [e_{0}+ \frac{1}{I_{t}} \int_{}^{} e_{0} dt]
 \end{equation}
 
-Cuando el objeto de control es una válvula, la acción derivativa no se utiliza porque tiene justamente la propiedad de actuar en un porcentaje muy elevado de la salida ante variaciones muy pequeñas o rápidas del error, es decir la entrada. Es la parte del algoritmo que en el desarrollo teórico, se añadió al final de todo, para acelerar la salida.
-Por la naturaleza matemática del algoritmo, la acción de control de la parte derivativa es muy alta en porcentaje, cuando la velocidad del error es elevada, aunque en magnitud sea pequeño. Esto hace que ante cualquier variación rápida del error, la válvula reaccione fuertemente, abriéndose o cerrándose. Estos movimientos repetitivos y violentos, lógicamente pueden terminar rompiendo la válvula. Es por esto que la acción derivativa no se utiliza cuando el actuador del sistema de control es una válvula. Entonces, ante una rápida variación (por ejemplo ruido electromagnético) se establece un porcentaje de salida muy grande. 
+Cuando el objeto control es una válvula la acción derivativa no se utiliza, dado que, su propiedad es la de actuar en porcentajes elevados de salida frente a variaciones muy pequeñas o rápidas de error.
+Es la parte del algoritmo que en el desarrollo teórico, se añadió al final de todo, para acelerar la salida.
+Por la naturaleza matemática del algoritmo, la acción de control de la parte derivativa es muy alta en porcentaje, cuando la velocidad del error es elevada, aunque en magnitud sea pequeña. Esto hace que ante cualquier variación rápida del error, la válvula reaccione fuertemente, abriéndose o cerrándose. Estos movimientos repetitivos y violentos, lógicamente pueden provocar dañosa esta pieza. Es por esto que la acción derivativa no se utiliza cuando el actuador del sistema de control es una válvula. Entonces, ante una rápida variación (por ejemplo ruido electromagnético) se establece un porcentaje de salida muy grande. 
 
 
 \subsection{Descripción general del firmware}
@@ -590,7 +592,7 @@ Por la naturaleza matemática del algoritmo, la acción de control de la parte d
 
 El firmware emplea un algoritmo de control PI con el objeto de corregir el error que existe entre el setpoint y el valor de caudal medido. El resultado de procesar la señal realimentada del sensor de presión contra el set point preestablecido por el usuario, es la salida o acción de control. Luego, este valor de salida obtenido en voltaje, se compara con la señal del sensor resistivo. De esta forma, se habilita y deshabilita la señal de tren de pulsos que son enviadas al controlador con el fin de girar el eje del motor paso a paso en un sentido y otro.
 Cuando ambas señales se anulan ante un segundo comparador significa que  se estableció la posición del obturador para suministrar el caudal deseado. En esta única ocurrencia se inhabilita la señal de tren de pulsos generada por el microcontrolador. En caso que la salida del algoritmo PI sea mayor que la señal del sensor resistivo, se habilita el giro del eje en sentido horario. En caso contrario se habilita el giro en sentido antihorario.     
-Por lo tanto, la señal proveniente del sensor resistivo de ángulo que también es retroalimentada, como se puede apreciar en la figura \ref{fig:Diagrama en bloque de la celda primaria}, brinda la posición actual del obturador a medida que va variando. Entonces, los tres fundamentales casos a tener en cuenta son:
+Por lo tanto, la señal proveniente del sensor resistivo de ángulo que también es retroalimentada, como se puede apreciar en la figura \ref{fig:Diagrama en bloque de la celda primaria}, brinda la posición actual del obturador a medida que este varíe. Entonces, los tres fundamentales casos a tener en cuenta son:
 \begin{itemize}
 
 \item Si la salida del algoritmo de control PI es igual a la señal del sensor resistivo, se inhabilita la señal de tren de pulsos.
@@ -603,6 +605,7 @@ En cuanto al modelado del firmware se utilizó una metodología orientada a obje
 Como solución se utilizó una técnica que permite explotar el uso de punteros a estructuras, y emular muy fácilmente una programación orientada a objetos, utilizando el lenguaje C estándar\citep{ADT}. Esta técnica considera un archivo de cabeceras (.h) como la interfaz pública de la clase y el archivo de código fuente (.c) como la implementación privada.
 La ventaja que ofrece implementar esta técnica es que permite generar un código que puede escalar muy fácilmente.
 En las siguientes porciones de código se puede ver de forma simplificada esta técnica de programación descrita.
+
 
 \begin{lstlisting}[label=cod:vControl,caption=Porción de código del archivo de cabecera con la interfaz pública de la clase StepperMotor.]  % Start your code-block
 

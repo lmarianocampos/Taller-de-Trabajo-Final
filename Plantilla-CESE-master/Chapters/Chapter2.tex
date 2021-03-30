@@ -16,8 +16,8 @@ En este capítulo se abordarán temas referentes al análisis de la estructura d
 %Si en el texto se hace alusión a diferentes partes del trabajo referirse a ellas como capítulo, sección o subsección según corresponda. Por ejemplo: ``En el capítulo \ref{Chapter1} se explica tal cosa'', o ``En la sección \ref{sec:ejemplo} se presenta lo que sea'', o ``En la subsección \ref{subsec:ejemplo} se discute otra cosa''.
  
 En un plano para la construcción del prototipo a escala, se pudo reconocer un inconveniente. Al emplear una compuerta que se desplaza verticalmente y ubicada en forma perpendicular al canal, se generarían filtraciones de agua en sus guías de desplazamiento. Como se trata de una maqueta a escala, estas filtraciones provocarían errores considerables al momento de realizar las mediciones relacionadas con la altura de la superficie de agua, y cálculos pertinentes al aplicar el método de aforo por compuerta para determinar el caudal. Por lo tanto, en el sistema no se obtendrían los resultados esperados. En este contexto, el caudal que circularía por debajo de la compuerta sería menor que el que se registraría en el caudalímetro. De esta forma, se obtendrían dos valores de caudales diferentes debido, entre otros factores, a las filtraciones.     
-Esto motivó a reemplazar, en el prototipo, la compuerta por una válvula y así eliminar los errores que introducen dichas filtraciones. 
-Para el control de la válvula se elaboró un servomotor con el empleo de un motor paso a paso con su correspondiente controlador.
+Esto motivo a reemplazar, en el prototipo, la compuerta por una válvula y así eliminar los errores que introducen dichas filtraciones. 
+Para el control de la válvula se elaboró un servomotor con el empleo de un motor paso a paso y su correspondiente controlador.
 En la figura \ref{fig:Vertedero triangular}, se puede apreciar un vertedero triangular en un canal abierto y una regla que mide el nivel de la superficie de agua.
 \begin{figure}[h]
 \centering
@@ -26,9 +26,9 @@ En la figura \ref{fig:Vertedero triangular}, se puede apreciar un vertedero tria
 \label{fig:Vertedero triangular}
 \end{figure}
 
-Para medir el caudal, se fabricó un caudalímetro por placa de aforo triangular. Estos tipos de instrumentos, también denominados vertederos, representan un dique o pared que intercepta en un determinado punto una corriente de líquido, en este caso agua, con superficie libre, como se puede apreciar en la figura 2.1 . En general, se utilizan para mantener un nivel de superficie de aguas arriba que no exceda de un valor límite, o bien para medir el caudal de agua circulante por un canal. Este instrumento resulta un medidor de caudal sencillo pero efectivo en canales abiertos. 
+Para medir el caudal, se fabricó un caudalímetro por placa de aforo triangular. Estos tipos de instrumentos, también denominados vertederos, representan un dique o pared que intercepta en un determinado punto una corriente de líquido, en este caso agua, con superficie libre, como se puede apreciar en la figura 2.1 . En general, se utilizan para mantener un nivel de superficie de aguas arriba que no exceda un valor límite, o bien para medir el caudal de agua circulante por un canal. Este instrumento resulta un medidor de caudal sencillo pero efectivo en canales abiertos. 
 
-El principio de funcionamiento de la celda primaria consiste en establecer el caudal de agua a un valor establecido por el usuario. Para llevar a cabo esto, fue necesario el desarrollo de un firmware que controla el eje de un servomotor. Este se encuentra adherido a una válvula, lo que permite maniobrar su rango de apertura para regular el flujo del fluido según las necesidades.
+El principio de funcionamiento de la celda primaria consiste en establecer el caudal de agua a un valor establecido por el usuario. Para llevar a cabo esto, fue necesario el desarrollo de un firmware para controlar el eje de un servomotor. Este se encuentra adherido a una válvula, lo que permite maniobrar su rango de apertura para regular el flujo del fluido según las necesidades.
 
 El diagrama de control correspondiente es el que se muestra en la figura \ref{fig:CeldaPrimaria} donde se aprecia que la salida del servomotor actúa directamente sobre la válvula. Esta puede ser una llave esférica, como es este el caso, o un sistema de cremallera. Este tipo de sistemas se aplican a compuertas verticales, como las que podemos encontrar frecuentemente en los canales de agua a cielo abierto. La salida de la válvula es el flujo controlado de caudal al canal. En este punto se coloca un medidor de caudal. Luego su resultado se compara con el set point, valor de caudal fijado por el usuario. En el sumador, a partir de la diferencia que existe entre el set point y el valor de caudal medido se obtiene una señal de error, que seguidamente se procesa por un algoritmo de control PID para que sea igual a cero.
 
@@ -39,10 +39,11 @@ El diagrama de control correspondiente es el que se muestra en la figura \ref{fi
 \label{fig:CeldaPrimaria}
 \end{figure}
 
-\section{Compuertas Miller}
+\section{Compuerta Miller}
 \label{sec:Compuertas miller}
-Las compuertas Miller es el mecanismo más utilizado en los canales de agua de riego para controlar la entrada de agua de los canales ramales y tomas directas a las parcelas. Están construidas de fierro fundido (vaciado o colado) por su resistencia a la oxidación. Sin embargo, son frágiles y poco maleables. La toma Miller, en esencia, es una compuerta circular que obtura la entrada a la tubería de salida, la que es izada por un mecanismo elevador compuesto de un vástago cilíndrico con cuerda tipo tornillo (roscas), generalmente de 2” de diámetro y longitud variable, en función de la altura a colocar la toma y un volante. Las tomas-granja Miller se clasifican por el diámetro de la tubería a obturar, y son de 18” y 24” las más comunes para tomas-granjas, mientras que las de 30” y 36” son usadas para abastecer ramales y subramales.
-Las ventajas de este tipo de tomas es que son relativamente baratas, la mayoría de las fundidoras las pueden construir y son de fácil colocación. Como desventajas, destacan que pueden tener filtraciones de consideración al ser difícil un cierre hermético debido al metal de la tubería y de la compuerta (comal), especialmente si, durante su fundición, no hay cuidado de tener acabados completamente a nivel. La calibración de esta estructura es difícil, ya que al abrirse parcialmente la compuerta sobre la tubería ambas de figura circular, se forman secciones tipo “media luna” con área hidráulica variable, sin seguir un patrón de fácil cálculo. 
+La compuerta Miller es el mecanismo más utilizado en los canales de agua de riego para controlar la entrada de agua de los canales ramales y tomas directas a las parcelas. Están construidas de fierro fundido (vaciado o colado) por su resistencia a la oxidación. Sin embargo, son frágiles y poco maleables. La toma Miller, en esencia, es una compuerta circular que obtura la entrada a la tubería de salida, y es izada por un mecanismo elevador compuesto de un vástago cilíndrico con cuerda tipo tornillo (roscas), generalmente de 2” de diámetro y longitud variable, en función de la altura a colocar la toma y un volante.
+Las tomas-granja Miller se clasifican por el diámetro de la tubería a obturar, y son de 18” y 24” las más comunes para tomas-granjas, mientras que las de 30” y 36” son usadas para abastecer ramales y subramales.
+Las ventajas de este tipo de tomas es que son relativamente baratas, la mayoría de las fundidoras las pueden construir y son de fácil colocación. Como desventajas, en primer lugar destacan que pueden tener filtraciones considerables, puesto que el material de la tubería y de la compuerta (comal) dificultan un cierre totalmente hermético, especialmente si, durante su fundición, no hay cuidado de tener acabados completamente a nivel. En segundo lugar, la calibración de esta estructura es difícil, ya que al abrirse parcialmente la compuerta sobre la tubería ambas de figura circular, se forman secciones tipo “media luna” con área hidráulica variable, sin seguir un patrón de fácil cálculo. 
 En las figuras \ref{fig:Compuerta tipo miller para toma-granja}, \ref{fig:Conducto preparado para colocar compuerta tipo miller.} y \ref{fig:Toma granja tipo miller de compuerta circular.} se puede apreciar como es la estructura de la compuerta, el conducto para la toma y su colocación.
 
 \begin{figure}[h]
@@ -71,11 +72,10 @@ Este mecanismo que se mostró y que se emplea en muchos países para el control 
 
 \section{Requerimiento a nivel de software y hardware}
 \label{sec:ejemplo}
-En esta sección se presentan los requerimientos específicos de software y hardware del sistema. Estos se tuvieron en cuenta al momento de inicio del desarrollo de este proyecto, cuyo fin es, mediante el control de movimiento de una válvula regular el caudal de agua según las necesidades del usuario. 
+En esta sección se presentan los requerimientos específicos de software y hardware del sistema. Estos se tuvieron en cuenta al momento de inicio del desarrollo de este proyecto, cuyo fin es, mediante el control de movimiento de una válvula, regular el caudal de agua según las necesidades del usuario. 
+
 \subsection{Requisitos específicos del software}
 \label{subsec:ejemplo}
-
-
  Los requisitos específicos de software fueron:
 
 \begin{enumerate}
@@ -86,7 +86,7 @@ En esta sección se presentan los requerimientos específicos de software y hard
 	\item El firmware deberá ser capaz, a través de un pin configurado como salida, habilitar - deshabilitar el servomotor.
 	\item El firmware deberá interactuar, mediante el empleo del puerto serial, con otra aplicación. 	  
 	\item Con un protocolo de comunicación definido entre la aplicación externa y el firmware, este último deberá ser capaz de recibir y enviar datos.
-	\item El firmware deberá enviar una notificación de correcta recepción de cualquier comando mediante el envío de un comando específico hacía la aplicación externa.  
+	\item El firmware deberá enviar una notificación de correcta recepción de cualquier comando mediante el envío de un comando específico hacia la aplicación externa.  
 	\item El firmware deberá reportar o notificar a la aplicación externa la recepción de un comando inválido mediante un comando específico.
 	\item En caso de recepción de comandos válidos, el firmware deberá informar internamente que hay datos a procesar. 
 \end{enumerate}
@@ -131,9 +131,9 @@ Para el control de la válvula fue necesario un motor que pueda producir un mome
 
 \end{itemize}
 \subsection{Sensor de presión}
-Para monitorizar el nivel de la columna de agua, necesario para determinar el caudal en un determinado instante, se optó por su alta precisión un sensor de presión cuyo modelo es MPX5010DP. Este transductor piezo-resistivo, es un sensor de presión de silicio monolítico que puede ser utilizado en aplicaciones que disponen de un microcontrolador o microprocesador con entradas ADC.
+Para monitorizar el nivel de la columna de agua, necesario para determinar el caudal en un determinado instante, se optó por su alta precisión un sensor de presión cuyo modelo es MPX5010DP \citep{SENSORPRESION}. Este transductor piezo-resistivo, es un sensor de presión de silicio monolítico que puede ser utilizado en aplicaciones que disponen de un microcontrolador o microprocesador con entradas ADC.
 El MPX5010DP entrega a su salida un rango de voltaje entre 0V y 5V, mediante esta información y una fórmula que se expone en el siguiente párrafo se puede estimar la presión hasta un valor de 10 KPa, esto es, una columna de agua de hasta 100 cm de altura.
-El dispositivo proporciona una salida lineal como puede se observar en la figura \ref{fig:función de salida del sensor}, extraída de su hoja de datos.
+El dispositivo proporciona una salida lineal como se puede observar en la figura \ref{fig:función de salida del sensor}, extraída de su hoja de datos.
 
 \begin{figure}[h]
 \centering
