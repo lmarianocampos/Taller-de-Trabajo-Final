@@ -56,7 +56,7 @@ De esta forma, genera una ganancia muy alta a bajas aperturas de carrera y una g
 La figura \ref{fig:grafica caudal vs. apertura de valvula}, muestra la curva típica de una válvula de apertura rápida.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.60]{./Figures/funcion-valvula.jpeg}
+\includegraphics[scale=.60]{./Figures/funcion-valvula.png}
 \caption{Gráfica del caudal en función de la apertura de la válvula.}
 \label{fig:grafica caudal vs. apertura de valvula}
 \end{figure}
@@ -74,7 +74,7 @@ En cuanto a la conexión entre el microcontrolador y el controlador fue necesari
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[scale=.65]{./Figures/circuitointerfaz-driver.jpeg}
+\includegraphics[scale=.55]{./Figures/circuitointerfaz-driver.png}
 \caption{Circuito interfaz - conexiones de señales a colector abierto.}
 \label{fig:circuito interfaz}
 \end{figure}
@@ -90,12 +90,14 @@ Siguiendo las recomendaciones del fabricante relacionadas a la construcción del
 
 En el esquemático se observa dos etapas, la primera es un circuito negador y la segunda corresponde a un circuito de colector abierto NPN.
 Por lo tanto, se puede decir que la etapa de potencia está formada por el circuito interfaz, el controlador y el motor paso a paso. 
-\vspace{2cm}
+
+\vspace{3cm}
+
 \subsubsection{Funcionamiento del servomotor}
  
 El servomotor está compuesto también por una fracción del firmware que comprende la parte inteligente del dispositivo fabricado.
 Asimismo, es el encargado de establecer al obturador de la válvula en una determinada posición y así proporcionar a su salida el caudal de agua requerido por el usuario. 
-Para esto fue indispensable obtener una estimación del porcentaje de apertura de la válvula. Por ello, se empleó un sensor resistivo de ángulo cuya señal se inyecta de forma retroalimentada a una de las entradas ADC del microcontrolador para su procesamiento. Este dispositivo adosado al eje de la válvula es un potenciómetro de una vuelta de 50 K$\Omega$ cuyo modelo es 91A-503, Bourns Cermet.
+Para esto fue indispensable obtener una estimación del porcentaje de apertura de la válvula. Por ello, se empleó un sensor resistivo de ángulo cuya señal se inyecta de forma retroalimentada a una de las entradas ADC del microcontrolador para su procesamiento. Este dispositivo adosado al eje de la válvula es un potenciómetro de una vuelta de 50 k$\Omega$ cuyo modelo es 91A-503, Bourns Cermet.
 
 En la figura \ref{fig:Diagrama en bloque de la celda primaria}, se puede apreciar un diagrama en bloque general que indica entre otras partes del trabajo, cómo está constituido el servomotor. Cada componente se encuentra delimitado en líneas punteadas de forma tal, que se puede tener una idea sobre qué partes pertenecen al servomotor y al microcontrolador.   
    
@@ -234,7 +236,7 @@ A su vez, la capa de aplicación está compuesta por los siguientes componentes 
 \item Control de recepción y envío de datos.
 \end{itemize}
 
-En la figura \ref{fig:Capas de componentes de software}, se puede apreciar el nivel de jerarquía de cada una de las capas siendo la capa HAL la  más baja: 
+En la figura \ref{fig:Capas de componentes de software}, se puede apreciar el nivel de jerarquía de cada una de las capas donde la capa HAL la  más baja: 
 
 \begin{figure}[htpb]
 \centering
@@ -244,32 +246,32 @@ En la figura \ref{fig:Capas de componentes de software}, se puede apreciar el ni
 \end{figure}
 
 \subsubsection{Diseño detallado}
-En esta subsección se incluye el diseño detallado de cada uno de los componentes de software presentados en la figura \ref{fig:Arquitectura de software}, todos ellos con sus respectivos diagramas de actividades. 
+En esta subsección se incluye el diseño detallado de cada uno de los componentes de software presentados en la figura \ref{fig:Arquitectura de software}, todos ellos con sus respectivos diagramas de actividades \citep{DIAGRAMADEACTIVIDADES}. 
 
 	\begin{figure}[htpb]
 	\centering
-	\includegraphics[scale=.60]{./Figures/Procesomonitorsensordepresion.png}
+	\includegraphics[scale=.65]{./Figures/Procesomonitorsensordepresion.png}
 	\caption{Proceso monitor del sensor de presión.}
 	\label{fig:Control servomotor}
 	\end{figure}
 	
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[scale=.60]{./Figures/ProcesoControlServo.png}
+	\includegraphics[scale=.65]{./Figures/ProcesoControlServo.png}
 	\caption{Proceso de control del servomotor.}
 	\label{fig:Control servomotor}
 	\end{figure}
 
  	\begin{figure}[htpb]
 	\centering
-	\includegraphics[scale=.60]{./Figures/MonitorValvula.png}
+	\includegraphics[scale=.65]{./Figures/MonitorValvula.png}
 	\caption{Proceso monitor válvula.}
 	\label{fig:Proceso monitor valvula}
 	\end{figure}
 
 	\begin{figure}[htpb]
 	\centering
-	\includegraphics[scale=.60]{./Figures/Porcesorecepcionyenviodedatos.png}
+	\includegraphics[scale=.65]{./Figures/Porcesorecepcionyenviodedatos.png}
 	\caption{Proceso de envío y recepción de datos.}
 	\label{fig:Proceso De envió y recepción de datos}
 	\end{figure}
@@ -426,26 +428,27 @@ El firmware deberá quedar operativo y en correcto funcionamiento y en condicion
 %\vspace{2cm}
 
 
-\subsection{Diagrama de clase del firmware}
+\subsection{Diagrama de clases del firmware}
 \label{subsec:Diagrama de clase}
-Previo al desarrollo del firmware, se realizó un diagrama de clase, que se puede apreciar en la figura \ref{fig:Diagrama de clase.}. 
+Previo al desarrollo del firmware, se realizó un diagrama de clases \citep{DIAGRAMADECLASES}, que se puede apreciar en la figura \ref{fig:Diagrama de clase.}. 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=.75]{./Figures/DiagramaDeClase-DistribucionDeAgua.png}
-	\caption{Diagrama de clase.}
+	\caption{Diagrama de clases.}
 	\label{fig:Diagrama de clase.}
 	\end{figure}
 \begin{itemize}
 
 \item Uart: este módulo recibe y envía los comandos desde y hacia la aplicación de comunicación serial que se ejecuta en la PC.
 
-\item Command Processing: acumula y convierte de carácter a decimal los comandos recibidos y los devuelve cuando es solicitado.
+\item CommandProcessing: acumula y convierte de carácter a decimal los comandos recibidos y los devuelve cuando es solicitado.
 
-\item Stepper Motor: este módulo posee todas las funciones inherentes al control del motor paso a paso. Interactúa con el módulo Servomotor para integrar las características de un servomotor convencional. 
+\item StepperMotor: este módulo posee todas las funciones inherentes al control del motor paso a paso. Interactúa con el módulo Servomotor para integrar las características de un servomotor convencional. 
 
-\item Servomotor: este módulo tiene la misión de establecer en cierta posición al obturador a través de la generación de una señal de tren de pulsos. Esto se realiza mediante una comparación entre la salida del algoritmo de control PID y la señal del sensor resistivo de ángulo. Cuando la comparación resulta igual a cero implica que alcanzó situar el obturador en la posición deseada.
+\item ServoMotor: este módulo tiene la misión de establecer en cierta posición al obturador a través de la generación de una señal de tren de pulsos. Esto se realiza mediante una comparación entre la salida del algoritmo de control PID y la señal del sensor resistivo de ángulo. Cuando la comparación resulta igual a cero implica que alcanzó situar el obturador en la posición deseada.
 
 \item PID: este módulo implementa un algoritmo de control PID que se ejecuta cada un segundo para cuantificar el error o desviación que existe entre el valor de caudal medido a través del sensor de presión y el valor deseado.
+\item Sherpa: es la clase central, que al momento de la ejecución esta compuesta por al menos una o más instancias de las clases \textit{PID} y \textit{StepperMotor} y, además por solo una instancia de \textit{commandProseccing}.
 \end{itemize}
 
 \vspace{1cm}
@@ -496,7 +499,7 @@ MA0360 & del motor. Cuatro dígitos para\\
 MFT0160 & completas. Cuatro dígitos para  \\
         & especificar el número de vueltas, 160.\\
 \midrule
-        & Establece el valor del setpoint en \\ 
+        & Establece el valor del set point en \\ 
 SP100   & porcentajes. Tres dígitos para\\
         & especificar el número de vueltas, 160.\\
 \midrule
@@ -551,12 +554,12 @@ NA & Devuelve el valor de altura del nivel\\
 %
 %\end{itemize}
 
-Al final de cada una de las tramas, se incorpora el carácter de salto de línea que indica el límite final del comando. Una vez recibido, el sistema lo procesa, de forma que si presenta un error, el firmware envía por el mismo medio una cadena de notificación “comando inválido”, caso contrario “comando válido”. 
+Al final de cada una de las tramas, se incorpora el carácter de salto de línea que indica el límite final del comando. Una vez recibido, el sistema lo procesa, de forma que si presenta un error, el firmware envía por el mismo medio una cadena de notificación “comando no válido”, caso contrario “comando válido”. 
 
 \subsection{Algoritmo PID}
 \label{subsec:Algoritmo PID}
 
-Durante el diseño del proyecto se identificó la posibilidad de implementar un control de proceso con realimentación. La tarea particular del sistema de control, es la de determinar y actualizar la posición de la válvula a medida que cambian las condiciones de carga. De esta manera, la variable controlada (caudal) alcanzará el valor deseado y permanecerá en un entorno de este, aún produciéndose perturbaciones externas. Con base en las necesidades expuestas se definió incorporar al firmware un algoritmo de control PID como una herramienta tecnológica que permite cuantificar el error o desviación que existe entre un valor medido y un valor deseado de caudal. 
+Durante el diseño del proyecto se identificó la posibilidad de implementar un control de proceso con realimentación. La tarea particular del sistema de control, es la de determinar y actualizar la posición de la válvula a medida que cambian las condiciones de carga. De esta manera, la variable controlada (caudal) alcanzará el valor deseado y permanecerá en un entorno de este, aún produciéndose perturbaciones externas. Con base en las necesidades expuestas se definió incorporar al firmware un algoritmo de control PID \citep{PROCESODECONTROL} como una herramienta tecnológica que permite cuantificar el error o desviación que existe entre un valor medido y un valor deseado de caudal. 
 
 \begin{equation}
  \label{eq:PID}
@@ -567,7 +570,7 @@ Donde:\\
 
 
 \item $\frac{100}{BP}$: ganancia del sistema (\%) 
-\item ${e_{0}}$:  error o diferencia entre el setpoint y el valor medido 
+\item ${e_{0}}$:  error o diferencia entre el set point y el valor medido 
 \item $\frac{1}{I_{t}}$: tiempo de integración
 \item ${D_{t}}$: tiempo de derivación
 
@@ -590,7 +593,7 @@ Por la naturaleza matemática del algoritmo, la acción de control de la parte d
 \subsection{Descripción general del firmware}
 \label{subsec:Descripción del firmware}
 
-El firmware emplea un algoritmo de control PI con el objeto de corregir el error que existe entre el setpoint y el valor de caudal medido. El resultado de procesar la señal realimentada del sensor de presión contra el set point preestablecido por el usuario, es la salida o acción de control. Luego, este valor de salida obtenido en voltaje, se compara con la señal del sensor resistivo. De esta forma, se habilita y deshabilita la señal de tren de pulsos que son enviadas al controlador con el fin de girar el eje del motor paso a paso en un sentido y otro.
+El firmware emplea un algoritmo de control PI con el objeto de corregir el error que existe entre el set point y el valor de caudal medido. El resultado de procesar la señal realimentada del sensor de presión contra el set point preestablecido por el usuario, es la salida o acción de control. Luego, este valor de salida obtenido en voltaje, se compara con la señal del sensor resistivo. De esta forma, se habilita y deshabilita la señal de tren de pulsos que son enviadas al controlador con el fin de girar el eje del motor paso a paso en un sentido y otro.
 Cuando ambas señales se anulan ante un segundo comparador significa que  se estableció la posición del obturador para suministrar el caudal deseado. En esta única ocurrencia se inhabilita la señal de tren de pulsos generada por el microcontrolador. En caso que la salida del algoritmo PI sea mayor que la señal del sensor resistivo, se habilita el giro del eje en sentido horario. En caso contrario se habilita el giro en sentido antihorario.     
 Por lo tanto, la señal proveniente del sensor resistivo de ángulo que también es retroalimentada, como se puede apreciar en la figura \ref{fig:Diagrama en bloque de la celda primaria}, brinda la posición actual del obturador a medida que este varíe. Entonces, los tres fundamentales casos a tener en cuenta son:
 \begin{itemize}

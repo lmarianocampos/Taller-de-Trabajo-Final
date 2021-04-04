@@ -8,11 +8,9 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 En este capítulo se detallan las pruebas realizadas durante el desarrollo del trabajo y finalmente se analizan los resultados obtenidos.
-\section{Ensayos de funcionamiento y calibración del sensor de presión
-}
-\label{sec:Ensayos de funcionamiento y calibración del sensor de presión
-}
-Se llevó a cabo pruebas acerca del correcto funcionamiento y calibración del sensor de presión MPX5010DP. Para esto, como primera instancia se utilizó un osciloscopio como instrumento de medición de la señal derivada del sensor, una fuente de alimentación de 5V para la energización del dispositivo y finalmente una manguera flexible de cristal cuyo diámetro externo es de 5 mm, 3 mm de diámetro interno y 300 mm de largo. Un extremo se conecta a una de las espigas del sensor y el otro se utiliza para introducir y evacuar agua mediante el uso de una jeringa. En la figura \ref{fig:Pruebas del sensor-Funcion patron.png} se puede apreciar la conexión del dispositivo trasnductor con la manguera flexible y con la herramienta de medición.    
+\section{Ensayos de funcionamiento y calibración del sensor de presión}
+\label{sec:Ensayos de funcionamiento y calibración del sensor de presión}
+Se llevó a cabo pruebas acerca del correcto funcionamiento y calibración del sensor de presión MPX5010DP. Para esto, como primera instancia se utilizó un osciloscopio como instrumento de medición de la señal derivada del sensor, una fuente de alimentación de 5 V para la energización del dispositivo y finalmente una manguera flexible de cristal cuyo diámetro externo es de 5 mm, 3 mm de diámetro interno y 300 mm de largo. Un extremo se conecta a una de las espigas del sensor y el otro se utiliza para introducir y evacuar agua mediante el uso de una jeringa. En la figura \ref{fig:Pruebas del sensor-Funcion patron.png} se puede apreciar la conexión del dispositivo trasnductor con la manguera flexible y con la herramienta de medición.    
 
 \begin{figure}[htpb]
 	\centering
@@ -21,7 +19,7 @@ Se llevó a cabo pruebas acerca del correcto funcionamiento y calibración del s
 \label{fig:Pruebas del sensor-Funcion patron.png}
 \end{figure}
 
-La finalidad de este ensayo fue la adquisición datos para reconocer que el sensor presente un comportamiento lineal, Voltaje vs. Presión KPa, como lo especifica su respectiva hoja de datos. Para eso, a medida que se variaba	la altura de la columna de agua de la manguera se obtiene a la salida del sensor su correspondiente valor de voltaje. De esta forma, se logró generar una tabla con valores de Voltaje vs. Altura, que podremos corresponder con la presión, mediante la ecuación \ref{eq:presiónII}.
+La finalidad de este ensayo fue la adquisición datos para reconocer que el sensor presente un comportamiento lineal, Voltaje vs. Presión kPa, como lo especifica su respectiva hoja de datos. Para eso, a medida que se variaba	la altura de la columna de agua de la manguera se obtiene a la salida del sensor su correspondiente valor de voltaje. De esta forma, se logró generar una tabla con valores de Voltaje vs. Altura, que podremos corresponder con la presión, mediante la ecuación \ref{eq:presiónII}.
     
 En la tabla \ref{tab:calibración del sensor-función patrón}, se puede apreciar que para cada valor de altura de columna de agua tiene asociado un valor de voltaje.  
 \begin{table}[htpb]
@@ -68,8 +66,7 @@ Por lo tanto, luego de esta comprobación se concluyó que el sensor presentó u
 	\end{figure}
 %\vspace{2cm}	
 	
-\section{Calibración del sensor en el prototipo
-}
+\section{Calibración del sensor en el prototipo}
 \label{sec:Calibración del sensor en el prototipo}
 Una vez concluida la prueba de correcto funcionamiento del sensor y construido el prototipo se realizó un ensayo que consiste en la adquisición de datos del sistema completo mediante el empleo del firmware. Los datos proporcionados por dicho firmware fueron valores de presión, voltaje y altura del nivel de agua. Además, con el uso de una regla estándar como instrumento de medición, se obtuvo el nivel de agua real en el prototipo. Así, se logró realizar un ajuste, para la necesidad del trabajo en altura correspondiente a la columna de agua, utilizando una regresión lineal. La tabla \ref{tab:adquisición de datos del sistema I.}, muestra valores obtenidos en el ensayo realizado. Los mismos corresponden a un rango de altura comprendido entre el suelo del canal y el vértice del caudalímetro.
 
@@ -112,7 +109,7 @@ Una vez concluida la prueba de correcto funcionamiento del sensor y construido e
 	\label{tab:adquisición de datos del sistema I.}
 \end{table}
 
-De los valores expuestos en la tabla \ref{tab:adquisición de datos del sistema I.}, podemos reconocer que la altura entre el suelo del canal y el vértice del caudalímetro es de 12,5 cm. Entonces, si el nivel de altura de agua es menor o igual que dicho valor el caudal de agua es equivalente a cero, ya que no supera la altura del vértice de dicho caudalímetro.
+De acuerdo con los valores expuestos en la tabla \ref{tab:adquisición de datos del sistema I.}, se puede reconocer que la altura entre el suelo del canal y el vértice del caudalímetro es de 12,5 cm. Entonces, si el nivel de altura de agua es menor o igual que dicho valor el caudal de agua es equivalente a cero, ya que no supera la altura del vértice de dicho caudalímetro.
 En la tabla \ref{tab:adquisición de datos del sistema II.}, se aprecia que para una altura superior a los 12,5 cm, hay presencia de agua que fluye por la hendidura de la placa de aforo, por lo que se puede obtener valores de caudal de agua, litros/minuto vs altura h de columna de agua.
  
 \begin{table}[htpb]
@@ -167,7 +164,7 @@ Estos datos se utilizaron para esbozar una gráfica y comprobar que responde a u
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=.65]{./Figures/FuncionPolinomica-Caudal.png}
+	\includegraphics[scale=.60]{./Figures/FuncionPolinomicaCaudal-Voltaje.png}
 	\caption{Función polinómica de segundo grado: caudal vs voltios.}
 \label{fig:Función polinomica de segundo grado: caudal vs voltios}
 \end{figure}
@@ -180,8 +177,23 @@ El diagrama correspondiente al prototipo se puede apreciar en la figura \ref{fig
 	\includegraphics[scale=.60]{./Figures/Diagrama-prototipoII.png}
 	\caption{Diagrama en bloque del prototipo.}
 	\label{fig:Diagrama en bloque del prototipo}
-	\end{figure}	
-	
+\end{figure}	
+
+\section{Resultados de las pruebas}
+\label{sec:Resultados de las pruebas}
+Al ser un entorno en el que se opera con agua, el tiempo mínimo para lograr el máximo caudal es de unos 120 segundos. Esto surgió de un ensayo realizado que consistió en abrir la válvula de 0\% al 100\% de manera manual e instantánea. Por esta razón, se determinó que el sistema posee un comportamiento lento por naturaleza. 
+En la figura \ref{fig:Función de salida del sistema}, se puede apreciar que el sistema con lazo cerrado alcanza el estado de salida deseado. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=.80]{./Figures/FuncionDeSalidaDelSistema.png}
+	\caption{Función de salida del sistema.}
+	\label{fig:Función de salida del sistema}
+\end{figure}
+
+En este ensayo, se estableció un valor de consigna o set point del 35\% del valor máximo de caudal. En la función de salida, se puede notar que en el momento que existe un error y, más aún si es grande, el sistema tiende a minimizarlo.  
+De esta forma, se puede observar que para llevar el caudal de 0\% al 35\% ocupa aproximadamente unos 150 segundos. Sin embargo, el sistema mostró un buen comportamiento durante las pruebas realizadas al establecer el caudal en 0\%, 25\%, 50\%,75\% y 100\% con idénticas respuestas esperadas de salida.  
+
 %\begin{table}[h]
 %	\centering
 %	\caption[caption corto]{caption largo más descriptivo}
