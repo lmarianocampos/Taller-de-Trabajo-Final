@@ -19,7 +19,7 @@ Se llevó a cabo pruebas acerca del correcto funcionamiento y calibración del s
 \label{fig:Pruebas del sensor-Funcion patron.png}
 \end{figure}
 
-La finalidad de este ensayo fue la adquisición datos para reconocer que el sensor presente un comportamiento lineal, Voltaje vs. Presión kPa, como lo especifica su respectiva hoja de datos. Para eso, a medida que se variaba	la altura de la columna de agua de la manguera se obtiene a la salida del sensor su correspondiente valor de voltaje. De esta forma, se logró generar una tabla con valores de Voltaje vs. Altura, que podremos corresponder con la presión, mediante la ecuación \ref{eq:presiónII}.
+La finalidad de este ensayo fue la adquisición datos para reconocer que el sensor presente un comportamiento lineal, Voltaje vs. Presión kPa, como lo especifica su respectiva hoja de datos. Para eso, a medida que se variaba	la altura de la columna de agua de la manguera se obtenía a la salida del sensor su correspondiente valor de voltaje. De esta forma, se logró generar una tabla con valores de Voltaje vs. Altura, que podremos corresponder con la presión, mediante la ecuación \ref{eq:presiónII}.
     
 En la tabla \ref{tab:calibración del sensor-función patrón}, se puede apreciar que para cada valor de altura de columna de agua tiene asociado un valor de voltaje.  
 \begin{table}[htpb]
@@ -54,7 +54,7 @@ En la tabla \ref{tab:calibración del sensor-función patrón}, se puede aprecia
 	\end{tabular}
 	\label{tab:calibración del sensor-función patrón}
 \end{table}
-A partir de los resultados conseguidos como se puede ver en la tabla \ref{tab:calibración del sensor-función patrón}, se pudo proyectar una gráfica que responde a una función lineal como se puede apreciar en la figura \ref{fig:Función patrón del sensor de presión calibrado: voltaje vs. altura}. 
+A partir de los resultados conseguidos, como se puede ver en la tabla \ref{tab:calibración del sensor-función patrón}, se pudo proyectar una gráfica que responde a una función lineal como se puede apreciar en la figura \ref{fig:Función patrón del sensor de presión calibrado: voltaje vs. altura}. 
 Es importante notar en la gráfica de la figura \ref{fig:Función patrón del sensor de presión calibrado: voltaje vs. altura}, se encuentra presente un desplazamiento hacia arriba de la función de 0.250V respecto del eje de las abscisas, tal como lo especifica en la hoja de datos del sensor. Entonces para una altura de columna de agua de 0 cm el sensor está entregando a su salida 0.250V. 
 Por lo tanto, luego de esta comprobación se concluyó que el sensor presentó un correcto desempeño.
 
@@ -174,14 +174,14 @@ Estos datos se utilizaron para esbozar una gráfica y comprobar que responde a u
 El diagrama correspondiente al prototipo se puede apreciar en la figura \ref{fig:Diagrama en bloque del prototipo}. En la imagen se observa que está compuesto por un depósito que suministra agua al banco de prueba. A su salida se encuentra una llave que durante los ensayos siempre está en el estado de apertura completa. Luego, se ubica la válvula de control con sus propios componentes que la conforman, el motor paso a paso, driver y fracción del firmware. Además se puede notar la presencia del algoritmo de control PI. Posterior a la válvula de control se puede dar con el canal que está construido por placas de madera impermeabilizadas para evitar filtraciones de agua. Finalmente se puede advertir el medidor de caudal constituido por el vertedero  con hendidura en V y el sensor de presión.
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=.60]{./Figures/Diagrama-prototipoII.png}
+	\includegraphics[scale=.55]{./Figures/Diagrama-prototipoII.png}
 	\caption{Diagrama en bloque del prototipo.}
 	\label{fig:Diagrama en bloque del prototipo}
 \end{figure}	
 
 \section{Resultados de las pruebas}
 \label{sec:Resultados de las pruebas}
-Al ser un entorno en el que se opera con agua, el tiempo mínimo para lograr el máximo caudal es de unos 120 segundos. Esto surgió de un ensayo realizado que consistió en abrir la válvula de 0\% al 100\% de manera manual e instantánea. Por esta razón, se determinó que el sistema posee un comportamiento lento por naturaleza. 
+Al ser un entorno en el que se opera con agua, el tiempo mínimo para lograr el máximo caudal es de unos 120 segundos. Esto surgió de un ensayo que consistió en abrir la válvula de 0\% al 100\% de manera manual e instantánea. Por esta razón, se determinó que el sistema posee un comportamiento lento por naturaleza. 
 En la figura \ref{fig:Función de salida del sistema}, se puede apreciar que el sistema con lazo cerrado alcanza el estado de salida deseado. 
 
 \begin{figure}[H]

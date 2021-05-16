@@ -24,22 +24,25 @@ En este último capítulo se presentan las conclusiones generales acerca de la r
 %\item Si se debieron hacer modificaciones a lo planificado ¿Cuáles fueron las causas y los efectos?
 %\item ¿Qué técnicas resultaron útiles para el desarrollo del proyecto y cuáles no tanto?
 %\end{itemize}
-En el trabajo realizado, se logró implementar de forma exitosa un prototipo correspondiente a un sistema de control de caudal en un canal a cielo abierto.
-A través, de las pruebas realizadas se pudo validar y demostrar su correcto funcionamiento, y se pudo obtener importantes conclusiones:
+En el trabajo realizado se logró implementar de forma exitosa un prototipo correspondiente a un sistema de control de caudal en un canal a cielo abierto.
+A través de las pruebas realizadas se pudo validar y demostrar su correcto funcionamiento. Además, se obtuvieron importantes conclusiones:
 \begin{enumerate}
-\item Se consiguió construir un medidor de caudal de forma tal que el firmware puede conocer esta variable con mayor precisión.
+\item Se consiguió construir un medidor de caudal de forma tal que el firmware pueda conocer esta variable con mayor precisión.
 \item Se construyó una electroválvula cuyo funcionamiento establece el obturador de forma aceptable.      
-\item Se aplicó un algoritmo de control PI que permite regular el caudal a un valor preestablecido, lo que permite proporcionar una gestión eficiente del fluido. 
-\item El diseño y la codificación empleados en el desarrollo del firmware, facilita la escalabilidad fácilmente sin pérdida de calidad del sistema.
+\item Se aplicó un algoritmo de control PI que permite regular el caudal a un valor preestablecido, lo que proporciona una gestión eficiente del fluido. 
+\item El diseño y la codificación empleados en el desarrollo del firmware, optimiza la escalabilidad de manera sencilla sin pérdida de calidad del sistema.
 
 \end{enumerate}
+De esta manera, se pudo completar con la construcción del prototipo que permitirá obtener un mayor control sobre la entrega del recurso en canales abiertos.
+Debido a los inconvenientes descritos en la sección \ref{sec:estructgeneralsistema}, que se generarían en el prototipo original, se tuvo que repensar un modelo alternativo, lo que ocasionó que el objetivo de finalizar en tiempo y forma no pudiera alcanzarse. 
+
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 \section{Próximos pasos}
 
 A continuación se detallan los trabajos futuros que se deben tener en cuenta para desarrollar y lograr un sistema global que pueda controlar el caudal en gran cantidad de compuertas que conforman una red de canal, de modo tal que se pueda desempeñar de forma autónoma y eficiente. 
-Como se trata de un prototipo, es imprescindible, como primera medida, adaptar este sistema a una compuerta real perteneciente a una red de canal de agua y luego someter a este equipo a pruebas de campo para validar su correcto funcionamiento.
+Como se trata de un prototipo, es imprescindible, como primera medida, adaptar este sistema a una compuerta de escala real perteneciente a una red de canal de agua y luego someter a este equipo a pruebas de campo para validar su correcto funcionamiento.
 
 El trabajo a efectuar, posterior a las pruebas de campo, es desarrollar un sistema de software principal con características de escalabilidad, de modo tal que permita añadir o integrar una gran cantidad de “celdas primarias”, ya que la mayoría de las redes de canales de distribución de agua están conformadas por un gran número de compuertas.
 
